@@ -118,7 +118,7 @@ public class UsuarioDAO {
         Usuario userBD = null;
 
         try {
-            stmtUser = conn.prepareStatement("SELECT id FROM tb_usuarios "
+            stmtUser = conn.prepareStatement("SELECT cl_id FROM tb_usuarios "
                     + "WHERE cl_login = ?");
             
             stmtUser.setString(1, _login);
@@ -149,7 +149,7 @@ public class UsuarioDAO {
         Usuario userBD = null;
 
         try {
-            stmtUser = conn.prepareStatement("SELECT id FROM tb_usuarios "
+            stmtUser = conn.prepareStatement("SELECT cl_id FROM tb_usuarios "
                     + "WHERE cl_email = ?");
             
             stmtUser.setString(1, _email);
