@@ -5,6 +5,9 @@
  */
 package sisplaca;
 
+import controller.Control;
+import view.SisPlacaLogin;
+
 /**
  *
  * @author Lorran
@@ -16,6 +19,15 @@ public class SisPlaca {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        final Control control = new Control();
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SisPlacaLogin(control).setVisible(true);
+            }
+        });
+        
     }
     
 }
