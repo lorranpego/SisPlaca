@@ -24,7 +24,8 @@ public class sisPlacaMain extends javax.swing.JFrame {
         initComponents();
         
         if(user.getPerfil() != 1){
-            menuUsuarios.setEnabled(false);
+            menuCadastrar.setEnabled(false);
+            menuPesquisar.setEnabled(false);
             menuCarros.setEnabled(false);
             menuProprietarios.setEnabled(false);
         }
@@ -47,6 +48,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuUsuarios = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
+        menuEditar = new javax.swing.JMenuItem();
         menuPesquisar = new javax.swing.JMenuItem();
         menuCarros = new javax.swing.JMenu();
         menuCadastrarCarro = new javax.swing.JMenuItem();
@@ -72,6 +74,14 @@ public class sisPlacaMain extends javax.swing.JFrame {
             }
         });
         menuUsuarios.add(menuCadastrar);
+
+        menuEditar.setText("Editar");
+        menuEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarActionPerformed(evt);
+            }
+        });
+        menuUsuarios.add(menuEditar);
 
         menuPesquisar.setText("Pesquisar");
         menuPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +145,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
         new SisPlacaUsuarioPesquisar(control).setVisible(true);
     }//GEN-LAST:event_menuPesquisarActionPerformed
 
+    private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
+        // TODO add your handling code here:
+        new SisPlacaUsuarioEditar(control, this.user).setVisible(true);
+    }//GEN-LAST:event_menuEditarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,6 +191,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCadastrar;
     private javax.swing.JMenuItem menuCadastrarCarro;
     private javax.swing.JMenu menuCarros;
+    private javax.swing.JMenuItem menuEditar;
     private javax.swing.JMenuItem menuPesquisar;
     private javax.swing.JMenu menuProprietarios;
     private javax.swing.JMenu menuUsuarios;

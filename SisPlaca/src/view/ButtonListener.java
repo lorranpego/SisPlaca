@@ -24,7 +24,6 @@ public class ButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-            System.out.println(this.usuario.getNome());
             new SisPlacaUsuarioEditar(control, this.usuario).setVisible(true);
     }
 }
