@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.Usuario;
 
 /**
@@ -32,5 +33,10 @@ public class Control {
 
     public Usuario getUser() {
         return user;
+    }
+    
+    public ArrayList<Usuario> getUsuarios(String _nome, String _usuario){
+        ArrayList<Usuario> users =  userControl.pesquisarUsuarios(_nome, _usuario);
+        return users;
     }
 }

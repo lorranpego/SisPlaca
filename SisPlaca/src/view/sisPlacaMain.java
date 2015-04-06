@@ -30,6 +30,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
         }
         
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -46,15 +47,12 @@ public class sisPlacaMain extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuUsuarios = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
-        menuEditar = new javax.swing.JMenuItem();
         menuPesquisar = new javax.swing.JMenuItem();
         menuCarros = new javax.swing.JMenu();
         menuCadastrarCarro = new javax.swing.JMenuItem();
-        MenuEditarCarro = new javax.swing.JMenuItem();
         MenuPesquisarCarros = new javax.swing.JMenuItem();
         menuProprietarios = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,14 +73,6 @@ public class sisPlacaMain extends javax.swing.JFrame {
         });
         menuUsuarios.add(menuCadastrar);
 
-        menuEditar.setText("Editar");
-        menuEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuEditarActionPerformed(evt);
-            }
-        });
-        menuUsuarios.add(menuEditar);
-
         menuPesquisar.setText("Pesquisar");
         menuPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,9 +88,6 @@ public class sisPlacaMain extends javax.swing.JFrame {
         menuCadastrarCarro.setText("Cadastrar");
         menuCarros.add(menuCadastrarCarro);
 
-        MenuEditarCarro.setText("Editar");
-        menuCarros.add(MenuEditarCarro);
-
         MenuPesquisarCarros.setText("Pesquisar");
         menuCarros.add(MenuPesquisarCarros);
 
@@ -110,9 +97,6 @@ public class sisPlacaMain extends javax.swing.JFrame {
 
         jMenuItem7.setText("Cadastrar");
         menuProprietarios.add(jMenuItem7);
-
-        jMenuItem8.setText("Editar");
-        menuProprietarios.add(jMenuItem8);
 
         jMenuItem9.setText("Pesquisar");
         menuProprietarios.add(jMenuItem9);
@@ -145,10 +129,6 @@ public class sisPlacaMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         new SisPlacaUsuarioCadastrar(control).setVisible(true);
     }//GEN-LAST:event_menuCadastrarActionPerformed
-
-    private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuEditarActionPerformed
 
     private void menuPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarActionPerformed
         // TODO add your handling code here:
@@ -187,18 +167,15 @@ public class sisPlacaMain extends javax.swing.JFrame {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuEditarCarro;
     private javax.swing.JMenuItem MenuPesquisarCarros;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JMenuItem menuCadastrar;
     private javax.swing.JMenuItem menuCadastrarCarro;
     private javax.swing.JMenu menuCarros;
-    private javax.swing.JMenuItem menuEditar;
     private javax.swing.JMenuItem menuPesquisar;
     private javax.swing.JMenu menuProprietarios;
     private javax.swing.JMenu menuUsuarios;

@@ -21,6 +21,7 @@ public class SisPlacaLogin extends javax.swing.JFrame {
         control = _control;
         initComponents();
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -5,6 +5,10 @@
 package view;
 
 import controller.Control;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import model.Usuario;
 
 /**
  *
@@ -15,11 +19,13 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
     Control control;
     /**
      * Creates new form SisPlacaUsuarioPesquisar
+     * @param _control
      */
     public SisPlacaUsuarioPesquisar(Control _control) {
         control = _control;
         initComponents();
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,6 +44,10 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
         TxUsuario = new javax.swing.JTextField();
         BtPesquisar = new javax.swing.JButton();
         LbOu = new javax.swing.JLabel();
+        LbMensagem = new javax.swing.JLabel();
+        BtFechar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        PanelUsers = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,17 +73,44 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
 
         LbOu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LbOu.setText("ou");
+
+        LbMensagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LbMensagem.setForeground(new java.awt.Color(255, 0, 0));
+        LbMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        BtFechar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtFechar.setText("FECHAR");
+        BtFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtFecharActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelUsersLayout = new javax.swing.GroupLayout(PanelUsers);
+        PanelUsers.setLayout(PanelUsersLayout);
+        PanelUsersLayout.setHorizontalGroup(
+            PanelUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        PanelUsersLayout.setVerticalGroup(
+            PanelUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 193, Short.MAX_VALUE)
+        );
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(127, 127, 127)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(BtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LbMensagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TxNome)
@@ -83,15 +120,27 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(134, 134, 134))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbNome)
                     .addComponent(LbUsuario))
@@ -100,9 +149,17 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                     .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LbOu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(BtPesquisar)
-                .addGap(81, 81, 81))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtPesquisar)
+                    .addComponent(BtFechar))
+                .addGap(26, 26, 26)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PanelUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -110,7 +167,56 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
 
     private void BtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPesquisarActionPerformed
         // TODO add your handling code here:
+        String nome = TxNome.getText();
+        String usuario = TxUsuario.getText();
+        
+        PanelUsers.removeAll();
+        PanelUsers.revalidate();
+        PanelUsers.repaint();
+        
+        if(nome.isEmpty() && usuario.isEmpty()){
+            LbMensagem.setText("Digite o nome ou o usuário para pesquisar.");
+        }else{
+            LbMensagem.setText("");
+            ArrayList<Usuario> users = control.getUsuarios(nome, usuario);
+            
+            int i = 1;
+            for(Usuario u : users){
+                //Cria novo label 
+                JLabel label = new JLabel();  
+                label.setText(u.getNome() + " " + u.getSobrenome());
+                label.setName("LbUser"+i);  
+                label.setSize(label.getPreferredSize());
+                label.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY() + (30*i));
+                
+                //Cria novo botao
+                JButton button = new JButton();
+                button.setName("BtUser"+i);
+                button.setText("Editar");
+                button.setSize(button.getPreferredSize());
+                
+                //cria novo listener para botao
+                button.addActionListener(new ButtonListener(u));
+                
+                button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
+                
+                if(i > 3){
+                    PanelUsers.setSize(PanelUsers.getWidth(), PanelUsers.getHeight()+30);
+                }
+                
+                PanelUsers.add(label);
+                PanelUsers.add(button);
+                PanelUsers.revalidate();
+                PanelUsers.repaint();
+                i++;
+            }
+        }
     }//GEN-LAST:event_BtPesquisarActionPerformed
+
+    private void BtFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtFecharActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_BtFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,17 +245,21 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
-
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtFechar;
     private javax.swing.JButton BtPesquisar;
+    private javax.swing.JLabel LbMensagem;
     private javax.swing.JLabel LbNome;
     private javax.swing.JLabel LbOu;
     private javax.swing.JLabel LbUsuario;
+    private javax.swing.JPanel PanelUsers;
     private javax.swing.JTextField TxNome;
     private javax.swing.JTextField TxUsuario;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -170,6 +170,12 @@ public class UsuarioDAO {
         return 0;
     }
     
+    /**
+     * Busca usuarios no banco de dados baseado em seu nome ou login.
+     * @param _nome
+     * @param _usuario
+     * @return 
+     */
     public ArrayList<Usuario> buscaUsuario(String _nome, String _usuario){
         Connection conn = DAOBase.getConn();
         PreparedStatement stmtUser = null;
@@ -180,25 +186,20 @@ public class UsuarioDAO {
         try{
             if(!_nome.isEmpty() && !_usuario.isEmpty()){
                 stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
-                        + "WHERE  cl_login = %?% OR cl_nome = %?%");
+                        + "WHERE  cl_login like ? OR cl_nome like ?");
+                stmtUser.setString(1, "%"+_usuario+"%");
+                stmtUser.setString(2, "%"+_nome+"%");
             }else{
                 if(!_nome.isEmpty() && _usuario.isEmpty()){
                     stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
-                        + "WHERE cl_nome = %?%");
+                        + "WHERE cl_nome like ?");
+                    stmtUser.setString(1, "%"+_nome+"%");
                 }else{
                     stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
-                        + "WHERE  cl_login = %?% ");  
+                        + "WHERE  cl_login like ? ");  
+                    stmtUser.setString(1, "%"+_usuario+"%");
                 }
             }
-        } catch (SQLException e) {
-            System.out.println("Database error");
-            // e.printStackTrace();
-        }
-        
-        try {
-            
-            stmtUser.setString(1, _usuario);
-            stmtUser.setString(2, _nome);
             
             ResultSet rs = stmtUser.executeQuery();
             while (rs.next()) {
@@ -223,4 +224,101 @@ public class UsuarioDAO {
         }
         return usuarios;
     }
+    
+    /**
+     * Exclui ou ativa usuario
+     * @param _usuario
+     * @param situacao
+     * @return 
+     */
+    
+    public boolean ExcluirUsuario(Usuario _usuario, int situacao){
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stm = null;
+        
+        Usuario userBD = _usuario;
+        
+        try {
+            conn.setAutoCommit(false);
+            stm = conn.prepareStatement("UPDATE tb_usuarios set cl_ativo = " + situacao + " WHERE cl_id = " + _usuario.getId());
+            stm.executeUpdate();
+            conn.commit();
+            conn.setAutoCommit(true);
+            
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("Database error");
+           // e.printStackTrace();
+        }
+        
+        return false;
+    }
+    
+    public boolean AtualizarUsuario(Usuario _usuario){
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stm = null;
+        PreparedStatement stmtUser;
+        
+        Long id = null;
+        String query = "";
+
+        try {
+            stmtUser = conn.prepareStatement("SELECT cl_id FROM tb_usuarios "
+                    + "WHERE cl_email = ?");
+            
+            stmtUser.setString(1, _usuario.getEmail());
+            
+            ResultSet rs = stmtUser.executeQuery();
+
+            if (rs.next()) {
+                id = new Long(rs.getLong("cl_id"));
+            }else{
+                id = new Long(0);
+            }
+        }catch(Exception e){
+            
+        }
+        
+        if(id.equals(_usuario.getId()) || id == 0){
+            try {
+                //Se senha nao for vazia sera atualizada tambem
+                if(!_usuario.getSenha().isEmpty())
+                    query = "cl_senha = password("+_usuario.getSenha()+") ,";
+                
+                
+                conn.setAutoCommit(false);
+                
+                stm = conn.prepareStatement("UPDATE tb_usuarios set "
+                                               + query +
+                                               " cl_nome = ? , cl_nomeDomeio = ?, "
+                                                + " cl_sobrenome = ?, cl_perfil = ?,"
+                                                + " cl_email = ?, cl_sexo = ?, "
+                                                +   " cl_telefone = ? "
+                                               + " WHERE cl_id = ?");
+                
+                stm.setString(1, _usuario.getNome());
+                stm.setString(2, _usuario.getNomeDoMeio());
+                stm.setString(3, _usuario.getSobrenome());
+                stm.setInt(4, _usuario.getPerfil());
+                stm.setString(5, _usuario.getEmail());
+                stm.setString(6, String.valueOf(_usuario.getSexo()));
+                stm.setString(7, _usuario.getTelefone());
+                stm.setLong(8, _usuario.getId());
+                
+                stm.executeUpdate();
+                conn.commit();
+                conn.setAutoCommit(true);
+
+                return true;
+
+            } catch (SQLException e) {
+                System.out.println("Database error");
+                e.printStackTrace();
+            }
+        }
+        
+        return false;
+    }
+    
 }

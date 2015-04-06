@@ -6,6 +6,7 @@
 package controller;
 
 import DAO.UsuarioDAO;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import model.Usuario;
@@ -33,6 +34,11 @@ public class UsuarioControl {
             return null;
     }
     
+    /**
+     * Salva novo usuario em banco de dados
+     * @param _user
+     * @return Integer
+     */
     public int SalvarUsuario(Usuario _user){
         //verificar email e telefone
         Pattern p = Pattern.compile(".+@.+\\.[a-z]+"); 
@@ -56,4 +62,38 @@ public class UsuarioControl {
         return -1;
     }
     
+    public ArrayList<Usuario> pesquisarUsuarios(String _nome, String _usuario){
+        return dao.buscaUsuario(_nome, _usuario);
+    }
+    
+    public String deletarUsuario(Usuario _user){
+        
+        if(_user.getAtivo() == 1){
+            if(dao.ExcluirUsuario(_user, 0)){
+                _user.setAtivo(0);
+                return "Usuário deletado com sucesso.";
+            }
+        }else{
+            if(dao.ExcluirUsuario(_user, 1))
+                _user.setAtivo(1);
+                return "Usuário ativado com sucesso.";
+        }
+        
+        return "Não foi possível modificar usuário.";
+    }
+    
+    public int AtualizarUsuario(Usuario _user){
+        //verificar email e telefone
+        Pattern p = Pattern.compile(".+@.+\\.[a-z]+"); 
+        Matcher m = p.matcher(_user.getEmail());
+
+        if(m.matches()){
+            //verificar se usuario ja existe
+            if(dao.AtualizarUsuario(_user))
+                return 1; //salvo com sucesso
+            else
+                return 0;
+        }
+        return -1;
+    } 
 }

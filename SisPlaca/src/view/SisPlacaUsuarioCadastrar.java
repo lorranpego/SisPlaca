@@ -17,12 +17,14 @@ public class SisPlacaUsuarioCadastrar extends javax.swing.JFrame {
     Control control;
     /**
      * Creates new form SisPlacaUsuarioCadastrar
+     * @param _control
      */
     public SisPlacaUsuarioCadastrar(Control _control) {
         control = _control;
         initComponents();
         
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
