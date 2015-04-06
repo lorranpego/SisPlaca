@@ -84,6 +84,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
         menuUsuarios.add(menuEditar);
 
         menuPesquisar.setText("Pesquisar");
+        menuPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPesquisarActionPerformed(evt);
+            }
+        });
         menuUsuarios.add(menuPesquisar);
 
         jMenuBar1.add(menuUsuarios);
@@ -144,6 +149,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
     private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuEditarActionPerformed
+
+    private void menuPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarActionPerformed
+        // TODO add your handling code here:
+        new SisPlacaUsuarioPesquisar(control).setVisible(true);
+    }//GEN-LAST:event_menuPesquisarActionPerformed
 
     /**
      * @param args the command line arguments

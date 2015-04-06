@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Usuario;
 
 /**
@@ -167,5 +168,59 @@ public class UsuarioDAO {
            // e.printStackTrace();
         }
         return 0;
+    }
+    
+    public ArrayList<Usuario> buscaUsuario(String _nome, String _usuario){
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stmtUser = null;
+        
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        Usuario userBD;
+        
+        try{
+            if(!_nome.isEmpty() && !_usuario.isEmpty()){
+                stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
+                        + "WHERE  cl_login = %?% OR cl_nome = %?%");
+            }else{
+                if(!_nome.isEmpty() && _usuario.isEmpty()){
+                    stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
+                        + "WHERE cl_nome = %?%");
+                }else{
+                    stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
+                        + "WHERE  cl_login = %?% ");  
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Database error");
+            // e.printStackTrace();
+        }
+        
+        try {
+            
+            stmtUser.setString(1, _usuario);
+            stmtUser.setString(2, _nome);
+            
+            ResultSet rs = stmtUser.executeQuery();
+            while (rs.next()) {
+                userBD = new Usuario();
+                userBD.setId(new Long(rs.getLong("cl_id")));
+                userBD.setLogin(rs.getString("cl_login"));
+                userBD.setSenha(rs.getString("cl_senha"));
+                userBD.setNome(rs.getString("cl_nome"));
+                userBD.setNomeDoMeio(rs.getString("cl_nomeDomeio"));
+                userBD.setSobrenome(rs.getString("cl_sobrenome"));
+                userBD.setPerfil(rs.getInt("cl_perfil"));
+                userBD.setEmail(rs.getString("cl_email"));
+                userBD.setSexo(rs.getString("cl_sexo").charAt(0));
+                userBD.setTelefone(rs.getString("cl_telefone"));
+                userBD.setAtivo(rs.getInt("cl_ativo"));
+                usuarios.add(userBD);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Database error");
+           // e.printStackTrace();
+        }
+        return usuarios;
     }
 }
