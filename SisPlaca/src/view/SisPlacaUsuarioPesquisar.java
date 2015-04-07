@@ -196,7 +196,7 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                 button.setSize(button.getPreferredSize());
                 
                 //cria novo listener para botao
-                button.addActionListener(new ButtonListener(u));
+                button.addActionListener(new ButtonListener(u, control));
                 
                 button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
                 

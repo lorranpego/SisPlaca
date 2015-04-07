@@ -174,7 +174,7 @@ public class UsuarioDAO {
      * Busca usuarios no banco de dados baseado em seu nome ou login.
      * @param _nome
      * @param _usuario
-     * @return 
+     * @return ArrayList<Usuarios>
      */
     public ArrayList<Usuario> buscaUsuario(String _nome, String _usuario){
         Connection conn = DAOBase.getConn();
@@ -184,17 +184,20 @@ public class UsuarioDAO {
         Usuario userBD;
         
         try{
+            //Busca pelos 2, nenhum dos 2 campos est avazia
             if(!_nome.isEmpty() && !_usuario.isEmpty()){
                 stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
                         + "WHERE  cl_login like ? OR cl_nome like ?");
                 stmtUser.setString(1, "%"+_usuario+"%");
                 stmtUser.setString(2, "%"+_nome+"%");
             }else{
+                //Busca por nome, campo de login esta vazio
                 if(!_nome.isEmpty() && _usuario.isEmpty()){
                     stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
                         + "WHERE cl_nome like ?");
                     stmtUser.setString(1, "%"+_nome+"%");
                 }else{
+                    //Busca por login, campo de nome esta vazio
                     stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
                         + "WHERE  cl_login like ? ");  
                     stmtUser.setString(1, "%"+_usuario+"%");
@@ -229,14 +232,11 @@ public class UsuarioDAO {
      * Exclui ou ativa usuario
      * @param _usuario
      * @param situacao
-     * @return 
+     * @return boolean
      */
-    
     public boolean ExcluirUsuario(Usuario _usuario, int situacao){
         Connection conn = DAOBase.getConn();
         PreparedStatement stm = null;
-        
-        Usuario userBD = _usuario;
         
         try {
             conn.setAutoCommit(false);
@@ -249,12 +249,17 @@ public class UsuarioDAO {
             
         } catch (SQLException e) {
             System.out.println("Database error");
-           // e.printStackTrace();
         }
         
         return false;
     }
     
+    /**
+     * Atualiza usuario baseado em usuario passado por parametro.
+     * Checa primeiro se email pertence a outro usuario.
+     * @param _usuario
+     * @return 
+     */
     public boolean AtualizarUsuario(Usuario _usuario){
         Connection conn = DAOBase.getConn();
         PreparedStatement stm = null;
@@ -262,7 +267,8 @@ public class UsuarioDAO {
         
         Long id = null;
         String query = "";
-
+        
+        //Pega ID de usuario baseado em email escolhido para o usuario
         try {
             stmtUser = conn.prepareStatement("SELECT cl_id FROM tb_usuarios "
                     + "WHERE cl_email = ?");
@@ -280,11 +286,12 @@ public class UsuarioDAO {
             
         }
         
+        //Checa se email pertence a mesmo usuario
         if(id.equals(_usuario.getId()) || id == 0){
             try {
                 //Se senha nao for vazia sera atualizada tambem
                 if(!_usuario.getSenha().isEmpty())
-                    query = "cl_senha = password("+_usuario.getSenha()+") ,";
+                    query = "cl_senha = password('"+_usuario.getSenha()+"') ,";
                 
                 
                 conn.setAutoCommit(false);

@@ -30,6 +30,12 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         setarValores(usuario);
+        //Caso usuario esteja editando a si proprio e nao possua perfil de administrador
+        //nao podera mudar proprio perfil
+        if(control.getUser().getPerfil() != 1){
+            OpPerfil.setEnabled(false);
+            BtDeletar.setEnabled(false);
+        }
 
     }
 
@@ -365,6 +371,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
                 case 1:{
                             LbMensagem.setText("Usuário salvo com sucesso");
                             LbMensagem.setForeground(Color.blue);
+                            //Atualiza usuario
                             this.usuario.setEmail(novoUser.getEmail());
                             this.usuario.setNome(novoUser.getNome());
                             this.usuario.setNomeDoMeio(novoUser.getNomeDoMeio());

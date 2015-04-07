@@ -27,11 +27,7 @@ public class UsuarioControl {
      * @return usuario, caso login seja feito
      */
     public Usuario realizarLogin(String _login, String _senha){
-        this.user = dao.realizarLogin(_login, _senha);
-        if(this.user != null){
-            return this.user;
-        }else
-            return null;
+        return  dao.realizarLogin(_login, _senha);
     }
     
     /**
@@ -62,10 +58,21 @@ public class UsuarioControl {
         return -1;
     }
     
+    /**
+     * Pesquisa usuarios baseado em nome ou login
+     * @param _nome
+     * @param _usuario
+     * @return 
+     */
     public ArrayList<Usuario> pesquisarUsuarios(String _nome, String _usuario){
         return dao.buscaUsuario(_nome, _usuario);
     }
     
+    /**
+     * Inverte situacao de usuario.
+     * @param _user
+     * @return 
+     */
     public String deletarUsuario(Usuario _user){
         
         if(_user.getAtivo() == 1){
@@ -82,6 +89,11 @@ public class UsuarioControl {
         return "Não foi possível modificar usuário.";
     }
     
+    /**
+     * Salva novos dados de usuario
+     * @param _user
+     * @return 
+     */
     public int AtualizarUsuario(Usuario _user){
         //verificar email e telefone
         Pattern p = Pattern.compile(".+@.+\\.[a-z]+"); 

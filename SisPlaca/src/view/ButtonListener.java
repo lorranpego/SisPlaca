@@ -16,10 +16,11 @@ import model.Usuario;
 
 public class ButtonListener implements ActionListener {
     private Usuario usuario;
-    private Control control = new Control();
+    private Control control;
 
-    public ButtonListener(Usuario _u) {
+    public ButtonListener(Usuario _u, Control _control) {
         this.usuario = _u;
+        this.control = _control;
     }
 
     @Override

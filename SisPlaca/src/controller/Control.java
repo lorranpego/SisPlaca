@@ -14,14 +14,21 @@ import model.Usuario;
  */
 public class Control {
     
+    //Usuario logado no sistema
     private Usuario user;
     
+    //Control das funcoes 
     public UsuarioControl userControl = new UsuarioControl();
     public CarroControl carroControl = new CarroControl();
     public PlacaControl placaControl = new PlacaControl();
     public ProprietarioControl proprietarioControl = new ProprietarioControl();
     
-    
+    /**
+     * Realiza login do usuario, e o seta no usuario pertencente a classe
+     * @param _login
+     * @param _senha
+     * @return 
+     */
     public int realizarLogin(String _login, String _senha){
         //Seta usuario que sera utilizado durante todo o tempo no sistema
         this.user = userControl.realizarLogin(_login, _senha);
@@ -30,11 +37,17 @@ public class Control {
         
         return 0;
     }
-
+    
     public Usuario getUser() {
         return user;
     }
     
+    /**
+     * Get lista de usuarios pesquisados.
+     * @param _nome
+     * @param _usuario
+     * @return 
+     */
     public ArrayList<Usuario> getUsuarios(String _nome, String _usuario){
         ArrayList<Usuario> users =  userControl.pesquisarUsuarios(_nome, _usuario);
         return users;
