@@ -7,9 +7,8 @@ package controller;
 
 import DAO.UsuarioDAO;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import model.Usuario;
+import tools.Util;
 
 /**
  *
@@ -18,6 +17,7 @@ import model.Usuario;
 public class UsuarioControl {
     
     UsuarioDAO dao = new UsuarioDAO();
+    Util util = new Util();
     public Usuario user;
     
     /**
@@ -37,10 +37,7 @@ public class UsuarioControl {
      */
     public int SalvarUsuario(Usuario _user){
         //verificar email e telefone
-        Pattern p = Pattern.compile(".+@.+\\.[a-z]+"); 
-        Matcher m = p.matcher(_user.getEmail());
-
-        if(m.matches()){
+        if(util.checkEmail(_user.getEmail())){
             //verificar se usuario ja existe
             if(dao.buscarUsuario(_user.getLogin()) == 0){
                 if(dao.buscarUsuarioEmail(_user.getEmail()) == 0){
@@ -96,10 +93,7 @@ public class UsuarioControl {
      */
     public int AtualizarUsuario(Usuario _user){
         //verificar email e telefone
-        Pattern p = Pattern.compile(".+@.+\\.[a-z]+"); 
-        Matcher m = p.matcher(_user.getEmail());
-
-        if(m.matches()){
+        if(util.checkEmail(_user.getEmail())){
             //verificar se usuario ja existe
             if(dao.AtualizarUsuario(_user))
                 return 1; //salvo com sucesso
