@@ -6,6 +6,10 @@ package view;
 
 import controller.Control;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 import model.Usuario;
 
 /**
@@ -16,6 +20,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
     
     Control control;
     Usuario usuario;
+    
     /**
      * Creates new form SisPlacaUsuarioCadastrar
      * @param _control
@@ -38,6 +43,10 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
         }
 
     }
+    
+    private void fecha(){
+       this.dispose();
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -234,8 +243,8 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
                                     .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LbTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(TxTelefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LbTelefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(298, 298, 298))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -369,7 +378,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
             
             switch(result){
                 case 1:{
-                            LbMensagem.setText("Usuário salvo com sucesso");
+                            LbMensagem.setText("Usuário editado com sucesso");
                             LbMensagem.setForeground(Color.blue);
                             //Atualiza usuario
                             this.usuario.setEmail(novoUser.getEmail());
@@ -381,12 +390,15 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
                             this.usuario.setTelefone(novoUser.getTelefone());
                             if(!novoUser.getSenha().isEmpty())
                                 this.usuario.setSenha(novoUser.getSenha());
-                            try {
-                                Thread.sleep(3000); 
-                                this.dispose();
-                            } catch (Exception e) {  
-                                e.printStackTrace();  
-                            }  
+                            
+                            Timer timer = new Timer(3000, new ActionListener(){
+                             @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    fecha();
+                                }
+                                }
+                            );
+                            timer.start();
                             break;
                 }
                 case 0:{
@@ -515,5 +527,6 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
        else
            OpSexo.setSelectedItem("Feminino");
    }
+   
 }
 

@@ -124,12 +124,14 @@ public class SisPlacaLogin extends javax.swing.JFrame {
         //Caso login seja vazio, foca login.
         if(userLogin.isEmpty()){
             login.requestFocus();
+            label1.setText("Digite o login.");
             return;
         }
         
         //Caso senha estiver vazia, foca em senha
         if(userPass.isEmpty()){
             senha.requestFocus();
+            label1.setText("Digite a senha.");
             return;
         }
         if(control.realizarLogin(userLogin, userPass) == 1){
