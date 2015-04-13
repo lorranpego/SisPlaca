@@ -21,4 +21,13 @@ public class Util {
         
         return m.matches();
     }
+    
+    /**Prepara as datas para serem inseridas no banco de dados **/
+    public static String dataSQL (String data){
+        String dataNova[] =  data.split("/");
+        if(dataNova.length > 1){
+            return dataNova[2] + "-" + dataNova[1] + "-" + dataNova[0];
+        }
+        return null;
+    }
 }
