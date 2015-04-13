@@ -22,7 +22,10 @@ public class Util {
         return m.matches();
     }
     
-    /**Prepara as datas para serem inseridas no banco de dados **/
+    /**Prepare dates to be inserted in the databases.
+     * @param data
+     * @return String 
+     **/
     public static String dataSQL (String data){
         String dataNova[] =  data.split("/");
         if(dataNova.length > 1){
