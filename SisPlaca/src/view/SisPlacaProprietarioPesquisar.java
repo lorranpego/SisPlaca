@@ -14,14 +14,14 @@ import model.Usuario;
  *
  * @author alunolab04
  */
-public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
+public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
     
     Control control;
     /**
      * Creates new form SisPlacaUsuarioPesquisar
      * @param _control
      */
-    public SisPlacaUsuarioPesquisar(Control _control) {
+    public SisPlacaProprietarioPesquisar(Control _control) {
         control = _control;
         initComponents();
         this.setResizable(false);
@@ -235,14 +235,16 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         

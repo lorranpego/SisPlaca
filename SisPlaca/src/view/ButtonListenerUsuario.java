@@ -14,11 +14,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
 
-public class ButtonListener implements ActionListener {
+public class ButtonListenerUsuario implements ActionListener {
     private Usuario usuario;
     private Control control;
 
-    public ButtonListener(Usuario _u, Control _control) {
+    public ButtonListenerUsuario(Usuario _u, Control _control) {
         this.usuario = _u;
         this.control = _control;
     }
