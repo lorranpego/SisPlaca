@@ -31,18 +31,20 @@ import javax.swing.Timer;
  *
  * @author alunolab04
  */
-public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
+public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
     
     Control control;
     JDatePickerImpl datePicker;
     byte[] fotoProprietario = null;
+    Proprietario propietario;
     /**
      * Creates new form SisPlacaUsuarioCadastrar
      * @param _control
      */
-    public SisPlacaProprietarioCadastrar(Control _control) {
-        control = _control;
+    public SisPlacaProprietarioEditar(Control _control, Proprietario _p) {
+        this.control = _control;
         initComponents();
+        this.propietario = _p;
         
         //Add datepicker 
         UtilDateModel model = new UtilDateModel();
@@ -392,7 +394,7 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
                         break;
                 }
                 case 1:{
-                            LbMensagem.setText("Proprietário salvo com sucesso");
+                            LbMensagem.setText("Usuário salvo com sucesso");
                             LbMensagem.setForeground(Color.blue);
                             
                             Timer timer = new Timer(3000, new ActionListener(){
@@ -441,7 +443,7 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
                     foto.setIcon(new ImageIcon(aux));//seta no jlabel   
                     foto.setText(null); //Seta texto de jlabel nulo
                 } catch (IOException ex) {
-                    //ex.printStackTrace();
+                    ex.printStackTrace();
                 }
             }
 
@@ -465,14 +467,18 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaProprietarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaProprietarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaProprietarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaProprietarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

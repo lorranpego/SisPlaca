@@ -115,6 +115,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
         menuProprietarios.add(jMenuItem7);
 
         jMenuItem9.setText("Pesquisar");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         menuProprietarios.add(jMenuItem9);
 
         jMenuBar1.add(menuProprietarios);
@@ -156,6 +161,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         new SisPlacaProprietarioCadastrar(control).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        new SisPlacaProprietarioPesquisar(control).setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@
 package controller;
 
 import DAO.ProprietarioDAO;
+import java.util.ArrayList;
 import model.Proprietario;
 import tools.Util;
 
@@ -19,7 +20,7 @@ public class ProprietarioControl {
     ProprietarioDAO dao = new ProprietarioDAO();
     
     /**
-     * Salva novo usuario em banco de dados
+     * Salva novo proprietario em banco de dados
      * @param _proprietario
      * @return Integer
      */
@@ -32,5 +33,14 @@ public class ProprietarioControl {
             }
         }
         return 0;
+    }
+    
+    /**
+     * Pesquisa proprietarios baseado em nome
+     * @param _nome
+     * @return 
+     */
+    public ArrayList<Proprietario> pesquisarUsuarios(String _nome){
+        return dao.buscarProprietarios(_nome);
     }
 }

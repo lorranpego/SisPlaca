@@ -11,7 +11,7 @@ package model;
  */
 public class Proprietario {
     
-    private int Id;
+    private long Id;
     private String nome;
     private String nomeDoMeio;
     private String sobrenome;
@@ -40,7 +40,7 @@ public class Proprietario {
         this.ativo = ativo;
     }
 
-    public Proprietario(int Id, String nome, String nomeDoMeio, String sobrenome, char sexo, String nascimento, 
+    public Proprietario(long Id, String nome, String nomeDoMeio, String sobrenome, char sexo, String nascimento, 
                         byte[] foto, String email, String telefone, String endereco, int ativo) {
         this.Id = Id;
         this.nome = nome;
@@ -55,7 +55,7 @@ public class Proprietario {
         this.ativo = ativo;
     }
 
-    public int getId() {
+    public long getId() {
         return Id;
     }
 
@@ -99,7 +99,7 @@ public class Proprietario {
         return ativo;
     }
 
-    public void setId(int Id) {
+    public void setId(long Id) {
         this.Id = Id;
     }
 
