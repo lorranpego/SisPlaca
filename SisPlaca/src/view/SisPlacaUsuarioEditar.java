@@ -337,6 +337,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_OpSexoActionPerformed
 
+    @SuppressWarnings("empty-statement")
     private void BtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalvarActionPerformed
         //Receber valores de view
         
