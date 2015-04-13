@@ -5,9 +5,6 @@
  */
 package model;
 
-import java.awt.Image;
-import java.util.Date;
-
 /**
  *
  * @author lorran
@@ -19,8 +16,8 @@ public class Proprietario {
     private String nomeDoMeio;
     private String sobrenome;
     private char sexo;
-    private Date nascimento;
-    private Image foto;
+    private String nascimento;
+    private byte[] foto;
     private String email;
     private String telefone;
     private String endereco;
@@ -29,7 +26,8 @@ public class Proprietario {
     public Proprietario() {
     }
 
-    public Proprietario(String nome, String nomeDoMeio, String sobrenome, char sexo, Date nascimento, Image foto, String email, String telefone, String endereco, int ativo) {
+    public Proprietario(String nome, String nomeDoMeio, String sobrenome, char sexo, String nascimento, byte[] foto, 
+            String email, String telefone, String endereco, int ativo) {
         this.nome = nome;
         this.nomeDoMeio = nomeDoMeio;
         this.sobrenome = sobrenome;
@@ -42,7 +40,8 @@ public class Proprietario {
         this.ativo = ativo;
     }
 
-    public Proprietario(int Id, String nome, String nomeDoMeio, String sobrenome, char sexo, Date nascimento, Image foto, String email, String telefone, String endereco, int ativo) {
+    public Proprietario(int Id, String nome, String nomeDoMeio, String sobrenome, char sexo, String nascimento, 
+                        byte[] foto, String email, String telefone, String endereco, int ativo) {
         this.Id = Id;
         this.nome = nome;
         this.nomeDoMeio = nomeDoMeio;
@@ -76,11 +75,11 @@ public class Proprietario {
         return sexo;
     }
 
-    public Date getNascimento() {
+    public String getNascimento() {
         return nascimento;
     }
 
-    public Image getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
@@ -120,11 +119,11 @@ public class Proprietario {
         this.sexo = sexo;
     }
 
-    public void setNascimento(Date nascimento) {
+    public void setNascimento(String nascimento) {
         this.nascimento = nascimento;
     }
 
-    public void setFoto(Image foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 
@@ -144,5 +143,8 @@ public class Proprietario {
         this.ativo = ativo;
     }
     
-    
+    @Override
+    public String toString(){
+        return this.nome + " " + this.nomeDoMeio + " " + this.sobrenome;
+    }
 }

@@ -17,6 +17,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
     Usuario user;
     /**
      * Creates new form SisPlacaUsuarioEditar
+     * @param _control
      */
     public sisPlacaMain(Control _control) {
         control = _control;
@@ -106,6 +107,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
         menuProprietarios.setText("Proprietários");
 
         jMenuItem7.setText("Cadastrar");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         menuProprietarios.add(jMenuItem7);
 
         jMenuItem9.setText("Pesquisar");
@@ -136,19 +142,20 @@ public class sisPlacaMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarActionPerformed
-        // TODO add your handling code here:
         new SisPlacaUsuarioCadastrar(control).setVisible(true);
     }//GEN-LAST:event_menuCadastrarActionPerformed
 
     private void menuPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarActionPerformed
-        // TODO add your handling code here:
         new SisPlacaUsuarioPesquisar(control).setVisible(true);
     }//GEN-LAST:event_menuPesquisarActionPerformed
 
     private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
-        // TODO add your handling code here:
         new SisPlacaUsuarioEditar(control, this.user).setVisible(true);
     }//GEN-LAST:event_menuEditarActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        new SisPlacaProprietarioCadastrar(control).setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments

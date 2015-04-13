@@ -33,4 +33,16 @@ public class Util {
         }
         return null;
     }
+    
+     /**Prepara as dadas recuperadas do bando de dados para serem apresentada
+     * @param data
+     * @return */
+    public static String dataApresentacao (String data){
+        String dataNova[] =  data.split("-");
+        if(dataNova.length > 1 ){
+            return dataNova[2] + "/" + dataNova[1] + "/" + dataNova[0];
+        }
+        return null;
+    }
+    
 }

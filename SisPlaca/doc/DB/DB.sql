@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `sisplaca`.`tb_proprietarios` (
   `cl_nomeDoMeio` VARCHAR(45) NULL,
   `cl_sobrenome` VARCHAR(45) NOT NULL,
   `cl_sexo` CHAR NOT NULL,
-  `cl_nascimento` DATETIME NULL,
+  `cl_nascimento` VARCHAR(45) NULL,
   `cl_foto` BLOB NOT NULL,
   `cl_email` VARCHAR(255) NOT NULL,
   `cl_telefone` VARCHAR(45) NOT NULL,

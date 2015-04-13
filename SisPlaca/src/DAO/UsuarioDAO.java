@@ -76,7 +76,7 @@ public class UsuarioDAO {
         
         try{
             conn.setAutoCommit(false);
-           //Inserção de novo cliente
+           //Inserção de novo usuario
             stm = conn.prepareStatement("INSERT INTO tb_usuarios (cl_login, cl_senha, cl_nome, cl_nomeDomeio, cl_sobrenome, cl_perfil,"
                     + "cl_email, cl_sexo, cl_telefone, cl_ativo) values (?, password(?), ?, ?, ?, ?, ?, ?, ?, 1)");
             stm.setString(1, _user.getLogin());
