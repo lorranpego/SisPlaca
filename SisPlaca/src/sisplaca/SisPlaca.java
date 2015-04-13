@@ -23,6 +23,7 @@ public class SisPlaca {
         final Control control = new Control();
         
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new SisPlacaLogin(control).setVisible(true);
             }
