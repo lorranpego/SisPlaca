@@ -99,6 +99,7 @@ public class ProprietarioDAO {
                 proprietarioBD.setTelefone(rs.getString("cl_telefone"));
                 proprietarioBD.setAtivo(rs.getInt("cl_ativo"));
                 proprietarioBD.setEndereco(rs.getString("cl_endereco"));
+                proprietarioBD.setFoto(rs.getBytes("cl_foto"));
                 proprietarios.add(proprietarioBD);
             }
             
@@ -107,5 +108,68 @@ public class ProprietarioDAO {
            // e.printStackTrace();
         }
         return proprietarios;
+    }
+
+    public boolean alterarProprietario(Proprietario _proprietario) {
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stm = null;
+        PreparedStatement stmtUser;
+        
+        try {
+            conn.setAutoCommit(false);
+
+            stm = conn.prepareStatement("UPDATE tb_proprietarios set "+
+                                           " cl_nome = ? , cl_nomeDomeio = ?, "
+                                            + " cl_sobrenome = ?, cl_nascimento = ?,"
+                                            + " cl_email = ?, cl_sexo = ?, "
+                                            +   " cl_telefone = ? , cl_ativo = ?, "
+                                            + "cl_endereco = ? , cl_foto = ? "
+                                           + " WHERE cl_id = ?");
+
+            stm.setString(1, _proprietario.getNome());
+            stm.setString(2, _proprietario.getNomeDoMeio());
+            stm.setString(3, _proprietario.getSobrenome());
+            stm.setString(4, Util.dataSQL(_proprietario.getNascimento()));
+            stm.setString(5, _proprietario.getEmail());
+            stm.setString(6, String.valueOf(_proprietario.getSexo()));
+            stm.setString(7, _proprietario.getTelefone());
+            stm.setInt(8, _proprietario.getAtivo());
+            stm.setString(9, _proprietario.getEndereco());
+            stm.setBytes(10, _proprietario.getFoto());
+            stm.setLong(11, _proprietario.getId());
+            
+
+            stm.executeUpdate();
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Database error");
+            e.printStackTrace();
+        }
+        
+        return false;
+    }
+
+    public boolean ExcluirProprietario(Proprietario _proprietario, int _situacao) {
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stm = null;
+        
+        try {
+            conn.setAutoCommit(false);
+            stm = conn.prepareStatement("UPDATE tb_proprietarios set cl_ativo = " + _situacao + " WHERE cl_id = " + _proprietario.getId());
+            stm.executeUpdate();
+            conn.commit();
+            conn.setAutoCommit(true);
+            
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("Database error");
+        }
+        
+        return false;
     }
 }

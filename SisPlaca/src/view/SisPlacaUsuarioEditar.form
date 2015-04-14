@@ -29,13 +29,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-              <Component id="BtSalvar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="BtCancelar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -52,11 +45,11 @@
                               <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel5" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                                  <Component id="OpPerfil" pref="138" max="32767" attributes="0"/>
                                   <Component id="LbSexo" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
                                   <Component id="OpSexo" alignment="0" pref="138" max="32767" attributes="0"/>
                                   <Component id="TxSobrenome" alignment="0" max="32767" attributes="0"/>
                                   <Component id="LbSobrenome" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Component id="OpPerfil" alignment="1" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -87,7 +80,7 @@
                                   <Component id="jLabel6" min="-2" pref="69" max="-2" attributes="0"/>
                                   <Component id="TxNome" min="-2" pref="128" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="79" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="TxTelefone" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
                                   <Component id="LbTelefone" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
@@ -97,15 +90,22 @@
                       <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="LbMensagem" min="-2" pref="569" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="64" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="BtSalvar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="393" max="-2" attributes="0"/>
+                              <Component id="BtCancelar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="LbMensagem" min="-2" pref="569" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
               <Component id="BtDeletar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

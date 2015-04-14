@@ -45,4 +45,34 @@ public class Util {
         return null;
     }
     
+    /**
+     * 
+     * @param data
+     * @return 
+     */
+    public static int getDayDate(String data){
+         String dataNova[] =  data.split("-");
+         if(dataNova.length > 1 ){
+            return Integer.parseInt(dataNova[2]);
+        }
+        return 0;
+    }
+    
+    public static int getMonthDate(String data){
+         String dataNova[] =  data.split("-");
+        
+         if(dataNova.length > 1 ){
+            return Integer.parseInt(dataNova[1]);
+        }
+        return 0;
+    }
+    
+    public static int getYearDate(String data){
+         String dataNova[] =  data.split("-");
+        
+         if(dataNova.length > 1 ){
+            return Integer.parseInt(dataNova[0]);
+        }
+        return 0;
+    }
 }
