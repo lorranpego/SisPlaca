@@ -110,6 +110,11 @@ public class ProprietarioDAO {
         return proprietarios;
     }
 
+    /**
+     * Update proprietario, with new info passed as parameter, all info must be in object.
+     * @param _proprietario
+     * @return boolean
+     */
     public boolean alterarProprietario(Proprietario _proprietario) {
         Connection conn = DAOBase.getConn();
         PreparedStatement stm = null;
@@ -153,13 +158,20 @@ public class ProprietarioDAO {
         return false;
     }
 
+    /**
+     * Altera situação de usuário.
+     * @param _proprietario
+     * @param _situacao
+     * @return boolean
+     */
     public boolean ExcluirProprietario(Proprietario _proprietario, int _situacao) {
         Connection conn = DAOBase.getConn();
         PreparedStatement stm = null;
         
         try {
             conn.setAutoCommit(false);
-            stm = conn.prepareStatement("UPDATE tb_proprietarios set cl_ativo = " + _situacao + " WHERE cl_id = " + _proprietario.getId());
+            stm = conn.prepareStatement("UPDATE tb_proprietarios set cl_ativo = " + 
+                                            _situacao + " WHERE cl_id = " + _proprietario.getId());
             stm.executeUpdate();
             conn.commit();
             conn.setAutoCommit(true);
@@ -168,6 +180,7 @@ public class ProprietarioDAO {
             
         } catch (SQLException e) {
             System.out.println("Database error");
+            //e.printStackTrace();
         }
         
         return false;

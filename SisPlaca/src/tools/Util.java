@@ -14,7 +14,12 @@ import java.util.regex.Pattern;
  */
 public class Util {
     
-    public boolean checkEmail(String _email){
+    /**
+     * Checa se email de usuário é válido.
+     * @param _email
+     * @return boolean
+     */
+    public static boolean checkEmail(String _email){
         //verificar email e telefone
         Pattern p = Pattern.compile(".+@.+\\.[a-z]+"); 
         Matcher m = p.matcher(_email);
@@ -34,7 +39,7 @@ public class Util {
         return null;
     }
     
-     /**Prepara as dadas recuperadas do bando de dados para serem apresentada
+     /**Prepara as datas recuperadas do banco de dados para serem apresentadas.
      * @param data
      * @return */
     public static String dataApresentacao (String data){
@@ -46,9 +51,9 @@ public class Util {
     }
     
     /**
-     * 
+     * Get day of passe date.
      * @param data
-     * @return 
+     * @return int
      */
     public static int getDayDate(String data){
          String dataNova[] =  data.split("-");
@@ -58,6 +63,11 @@ public class Util {
         return 0;
     }
     
+    /**
+     * Get month of date.
+     * @param data
+     * @return int
+     */
     public static int getMonthDate(String data){
          String dataNova[] =  data.split("-");
         
@@ -67,6 +77,11 @@ public class Util {
         return 0;
     }
     
+    /**
+     * Get year of date.
+     * @param data
+     * @return int
+     */
     public static int getYearDate(String data){
          String dataNova[] =  data.split("-");
         

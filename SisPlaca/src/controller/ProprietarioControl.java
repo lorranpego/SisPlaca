@@ -16,7 +16,6 @@ import tools.Util;
  */
 public class ProprietarioControl {
     
-    Util util = new Util();
     ProprietarioDAO dao = new ProprietarioDAO();
     
     /**
@@ -25,7 +24,7 @@ public class ProprietarioControl {
      * @return Integer
      */
     public int salvarProprietario(Proprietario _proprietario){
-        if(util.checkEmail(_proprietario.getEmail())){
+        if(Util.checkEmail(_proprietario.getEmail())){
             if(dao.salvarProprietario(_proprietario)){
                 return 1; //salvo com sucesso
             }else{
@@ -41,7 +40,7 @@ public class ProprietarioControl {
      * @return Integer
      */
     public int alterarProprietario(Proprietario _proprietario){
-        if(util.checkEmail(_proprietario.getEmail())){
+        if(Util.checkEmail(_proprietario.getEmail())){
             if(dao.alterarProprietario(_proprietario)){
                 return 1; //salvo com sucesso
             }else{

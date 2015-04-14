@@ -87,7 +87,7 @@ public class UsuarioControl {
     }
     
     /**
-     * Salva novos dados de usuario
+     * Atualiza usuario em banco de dados.
      * @param _user
      * @return 
      */

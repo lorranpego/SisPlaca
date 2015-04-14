@@ -40,7 +40,7 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
     JDatePickerImpl datePicker;
     byte[] fotoProprietario = null;
     Proprietario proprietario;
-    Util util = new Util();
+
     /**
      * Creates new form SisPlacaUsuarioCadastrar
      * @param _control
@@ -54,9 +54,9 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
         //Add datepicker 
         UtilDateModel model = new UtilDateModel();
         //set date on datepicker
-        int ano = util.getYearDate(proprietario.getNascimento());
-        int mes = util.getMonthDate(proprietario.getNascimento());
-        int dia = util.getDayDate(proprietario.getNascimento());
+        int ano = Util.getYearDate(proprietario.getNascimento());
+        int mes = Util.getMonthDate(proprietario.getNascimento());
+        int dia = Util.getDayDate(proprietario.getNascimento());
         model.setDate(ano, mes, dia);
         model.setSelected(true);
         //end setting date
@@ -407,7 +407,7 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
             LbMensagem.setText("Os campos marcados com asterisco não podem estar vazio.");
         else{
             Proprietario novoProp = new Proprietario(proprietario.getId(), nome, nomeDoMeio, sobrenome, sexo, nascimento, 
-                    fotoProprietario, email, telefone, endereco, 1);
+                    fotoProprietario, email, telefone, endereco, proprietario.getAtivo());
             int result = control.proprietarioControl.alterarProprietario(novoProp);
             switch(result){
                 case -1:{
@@ -423,7 +423,7 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
                 case 1:{
                             LbMensagem.setText("Proprietário editado com sucesso");
                             LbMensagem.setForeground(Color.blue);
-                            
+                            //Timer para fechar tela automaticamente em 3 segundos
                             Timer timer = new Timer(3000, new ActionListener(){
                              @Override
                                 public void actionPerformed(ActionEvent e) {
@@ -431,7 +431,7 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
                                 }
                                 }
                             );
-                            timer.start();
+                            timer.start();//dispara timer
                             break;
                 }
             };

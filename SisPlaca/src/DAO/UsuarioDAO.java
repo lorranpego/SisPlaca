@@ -321,7 +321,7 @@ public class UsuarioDAO {
 
             } catch (SQLException e) {
                 System.out.println("Database error");
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
         

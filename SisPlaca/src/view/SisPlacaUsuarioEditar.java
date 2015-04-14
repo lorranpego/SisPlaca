@@ -370,7 +370,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
         }
         
         //Checagem de valores
-        if(nome.isEmpty() || sobrenome.isEmpty() || user.isEmpty() || email.isEmpty() || telefone.isEmpty())
+        if( nome.isEmpty() || sobrenome.isEmpty() || user.isEmpty() || email.isEmpty() || telefone.isEmpty() )
             LbMensagem.setText("Os campos marcados com asterisco não podem estar vazio.");
         else{
             Usuario novoUser = new Usuario(this.usuario.getId(), user, senha, nome, nomeDoMeio, sobrenome, perfil, email, sexo, telefone, 1);
