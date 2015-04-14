@@ -176,10 +176,15 @@ public class UsuarioDAO {
      * @param _usuario
      * @return ArrayList<Usuarios>
      */
-    public ArrayList<Usuario> buscaUsuario(String _nome, String _usuario){
+    public ArrayList<Usuario> buscaUsuario(String _nome, String _usuario, Boolean _desativados){
         Connection conn = DAOBase.getConn();
         PreparedStatement stmtUser = null;
         
+        String query = "";
+        
+        if(!_desativados)
+            query = " AND cl_ativo = 1";
+            
         ArrayList<Usuario> usuarios = new ArrayList<>();
         Usuario userBD;
         
@@ -187,19 +192,19 @@ public class UsuarioDAO {
             //Busca pelos 2, nenhum dos 2 campos est avazia
             if(!_nome.isEmpty() && !_usuario.isEmpty()){
                 stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
-                        + "WHERE  cl_login like ? OR cl_nome like ?");
+                        + "WHERE  (cl_login like ? OR cl_nome like ?) " + query);
                 stmtUser.setString(1, "%"+_usuario+"%");
                 stmtUser.setString(2, "%"+_nome+"%");
             }else{
                 //Busca por nome, campo de login esta vazio
                 if(!_nome.isEmpty() && _usuario.isEmpty()){
                     stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
-                        + "WHERE cl_nome like ?");
+                        + "WHERE cl_nome like ? " + query);
                     stmtUser.setString(1, "%"+_nome+"%");
                 }else{
                     //Busca por login, campo de nome esta vazio
                     stmtUser = conn.prepareStatement("SELECT * FROM tb_usuarios "
-                        + "WHERE  cl_login like ? ");  
+                        + "WHERE  cl_login like ? " + query);  
                     stmtUser.setString(1, "%"+_usuario+"%");
                 }
             }

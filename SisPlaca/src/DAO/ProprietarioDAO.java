@@ -69,18 +69,23 @@ public class ProprietarioDAO {
      * @param _nome
      * @return 
      */
-    public ArrayList<Proprietario> buscarProprietarios(String _nome){
+    public ArrayList<Proprietario> buscarProprietarios(String _nome, Boolean _ativado){
         Connection conn = DAOBase.getConn();
         PreparedStatement stmtUser = null;
         
         ArrayList<Proprietario> proprietarios = new ArrayList<>();
         Proprietario proprietarioBD;
         
+        String query = "";
+        if(!_ativado)
+            query = " AND cl_ativo = 1";
+        
         try{
 
             //Busca por nome
             stmtUser = conn.prepareStatement("SELECT * FROM tb_proprietarios "
-                + "WHERE cl_nome like ? or cl_nomeDoMeio like ? or cl_sobrenome like ?");
+                + "WHERE (cl_nome like ? or cl_nomeDoMeio like ? or cl_sobrenome like ?) " + query);
+            
             stmtUser.setString(1, "%"+_nome+"%");
             stmtUser.setString(2, "%"+_nome+"%");
             stmtUser.setString(3, "%"+_nome+"%");

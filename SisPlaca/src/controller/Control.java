@@ -48,8 +48,8 @@ public class Control {
      * @param _usuario
      * @return 
      */
-    public ArrayList<Usuario> getUsuarios(String _nome, String _usuario){
-        ArrayList<Usuario> users =  userControl.pesquisarUsuarios(_nome, _usuario);
+    public ArrayList<Usuario> getUsuarios(String _nome, String _usuario, Boolean _desativados){
+        ArrayList<Usuario> users =  userControl.pesquisarUsuarios(_nome, _usuario, _desativados);
         return users;
     }
 }

@@ -61,8 +61,8 @@ public class UsuarioControl {
      * @param _usuario
      * @return 
      */
-    public ArrayList<Usuario> pesquisarUsuarios(String _nome, String _usuario){
-        return dao.buscaUsuario(_nome, _usuario);
+    public ArrayList<Usuario> pesquisarUsuarios(String _nome, String _usuario, Boolean _desativados){
+        return dao.buscaUsuario(_nome, _usuario, _desativados);
     }
     
     /**
