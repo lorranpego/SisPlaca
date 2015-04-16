@@ -236,6 +236,11 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BtFecharActionPerformed
 
+    private void cleanPanel(){
+        PanelUsers.removeAll();
+        PanelUsers.revalidate();
+        PanelUsers.repaint();
+    }
     /**
      * @param args the command line arguments
      */
