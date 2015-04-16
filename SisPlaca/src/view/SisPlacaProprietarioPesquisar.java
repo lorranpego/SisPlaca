@@ -5,6 +5,8 @@
 package view;
 
 import controller.Control;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -199,6 +201,13 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                 //cria novo listener para botao
                 button.addActionListener(new ButtonListenerProprietario(p, control));
                 
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        cleanPanel();
+                    }
+                });
+                
                 button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
                 
                 if(i > 3){
@@ -218,7 +227,13 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BtFecharActionPerformed
-
+    
+    
+    private void cleanPanel(){
+        PanelProprietarios.removeAll();
+        PanelProprietarios.revalidate();
+        PanelProprietarios.repaint();
+    }
     /**
      * @param args the command line arguments
      */

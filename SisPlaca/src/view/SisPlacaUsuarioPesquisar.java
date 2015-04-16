@@ -5,6 +5,8 @@
 package view;
 
 import controller.Control;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -215,6 +217,13 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                 
                 //cria novo listener para botao
                 button.addActionListener(new ButtonListenerUsuario(u, control));
+                
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        cleanPanel();
+                    }
+                });
                 
                 button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
                 

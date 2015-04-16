@@ -386,7 +386,7 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
                             LbMensagem.setText("Proprietário salvo com sucesso");
                             LbMensagem.setForeground(Color.blue);
                             
-                            Timer timer = new Timer(3000, new ActionListener(){
+                            Timer timer = new Timer(1500, new ActionListener(){
                              @Override
                                 public void actionPerformed(ActionEvent e) {
                                     fecha();

@@ -424,7 +424,7 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
                             LbMensagem.setText("Proprietário editado com sucesso");
                             LbMensagem.setForeground(Color.blue);
                             //Timer para fechar tela automaticamente em 3 segundos
-                            Timer timer = new Timer(3000, new ActionListener(){
+                            Timer timer = new Timer(1500, new ActionListener(){
                              @Override
                                 public void actionPerformed(ActionEvent e) {
                                     fecha();
@@ -481,7 +481,7 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
         String msg = control.proprietarioControl.deletarProprietario(proprietario);
         LbMensagem.setText(msg);
         LbMensagem.setForeground(Color.blue);
-        Timer timer = new Timer(3000, new ActionListener(){
+        Timer timer = new Timer(1500, new ActionListener(){
             @Override
                public void actionPerformed(ActionEvent e) {
                    fecha();

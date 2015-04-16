@@ -391,7 +391,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
                             if(!novoUser.getSenha().isEmpty())
                                 this.usuario.setSenha(novoUser.getSenha());
                             
-                            Timer timer = new Timer(3000, new ActionListener(){
+                            Timer timer = new Timer(1500, new ActionListener(){
                              @Override
                                 public void actionPerformed(ActionEvent e) {
                                     fecha();
@@ -425,7 +425,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
         String msg = control.userControl.deletarUsuario(usuario);
             LbMensagem.setText(msg);
             LbMensagem.setForeground(Color.blue);
-            Timer timer = new Timer(3000, new ActionListener(){
+            Timer timer = new Timer(1500, new ActionListener(){
                 @Override
                    public void actionPerformed(ActionEvent e) {
                        fecha();
