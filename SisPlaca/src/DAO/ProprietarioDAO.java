@@ -17,6 +17,7 @@ import tools.Util;
  *
  * @author lorran
  */
+
 public class ProprietarioDAO {
     
     /**
