@@ -30,9 +30,12 @@ public class SisPlacaUsuarioCadastrar extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    /**
+     * Fecha janela.
+     */
     private void fecha(){
         this.dispose();
-   }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -324,6 +327,7 @@ public class SisPlacaUsuarioCadastrar extends javax.swing.JFrame {
         String senha = new String(TxSenha.getPassword());
         Integer perfil;
         String p = String.valueOf(OpPerfil.getSelectedItem());;
+        //Informacoes de perfil
         if(p.equals("Administrador")){
             perfil = 1;
         }
@@ -336,6 +340,7 @@ public class SisPlacaUsuarioCadastrar extends javax.swing.JFrame {
         String telefone = TxTelefone.getText();
         char sexo;
         String s = String.valueOf(OpSexo.getSelectedItem());;
+        //Informacoes de sexo
         if(s.equals("Masculino")){
             sexo = 'M';
         }

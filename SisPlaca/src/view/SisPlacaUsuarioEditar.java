@@ -44,9 +44,12 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
 
     }
     
+    /**
+     * Fecha janela
+     */
     private void fecha(){
        this.dispose();
-   }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -350,6 +353,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
         String senha = new String(TxSenha.getPassword());
         Integer perfil;
         String p = String.valueOf(OpPerfil.getSelectedItem());;
+        //Informacoes de perfil
         if(p.equals("Administrador")){
             perfil = 1;
         }
@@ -362,6 +366,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
         String telefone = TxTelefone.getText();
         char sexo;
         String s = String.valueOf(OpSexo.getSelectedItem());;
+        //Informacoes de sexo
         if(s.equals("Masculino")){
             sexo = 'M';
         }
@@ -380,7 +385,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
                 case 1:{
                             LbMensagem.setText("Usuário editado com sucesso");
                             LbMensagem.setForeground(Color.blue);
-                            //Atualiza usuario
+                            //Atualiza valores de usuario
                             this.usuario.setEmail(novoUser.getEmail());
                             this.usuario.setNome(novoUser.getNome());
                             this.usuario.setNomeDoMeio(novoUser.getNomeDoMeio());
@@ -396,8 +401,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
                                 public void actionPerformed(ActionEvent e) {
                                     fecha();
                                 }
-                                }
-                            );
+                            });
                             timer.start();
                             break;
                 }
@@ -417,9 +421,13 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
 
     private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.fecha();
     }//GEN-LAST:event_BtCancelarActionPerformed
 
+    /**
+     * Marca usuario como inativo em banco de dados
+     * @param evt 
+     */
     private void BtDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDeletarActionPerformed
         // TODO add your handling code here:
         String msg = control.userControl.deletarUsuario(usuario);
@@ -430,8 +438,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
                    public void actionPerformed(ActionEvent e) {
                        fecha();
                    }
-                }
-            );
+            });
             timer.start();
             
     }//GEN-LAST:event_BtDeletarActionPerformed
@@ -497,6 +504,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
 
     /**
      * Seta valores presentes em usuario
+     * @param Usuario
      */
    private void setarValores(Usuario _usuario){
         
@@ -529,6 +537,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
        else
            OpSexo.setSelectedItem("Feminino");
    }
+   
    
 }
 

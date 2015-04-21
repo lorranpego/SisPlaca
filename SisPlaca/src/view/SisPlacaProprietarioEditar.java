@@ -72,15 +72,19 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
         this.repaint();
         //end add datepicker
         
+        //Adicina valores a objeto de proprietario
         setValues(proprietario);
         
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
     
+    /**
+     * Fecha janela aberta.
+     */
     private void fecha(){
         this.dispose();
-   }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -388,6 +392,7 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
         }
         //end selecao de data
         
+        //Selecao de sexo
         char sexo;
         String s = String.valueOf(OpSexo.getSelectedItem());;
         if(s.equals("Masculino")){
@@ -396,6 +401,8 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
         else{
             sexo = 'F';
         }
+        //end selecao de sexo
+        
         //Informacoes de contato
         String email = TxEmail.getText();
         String telefone = TxTelefone.getText();
@@ -477,6 +484,10 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtImagemActionPerformed
 
+    /**
+     * Seta proprietario como inativo/ativo em banco de dados.
+     * @param evt 
+     */
     private void BtDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDeletarActionPerformed
         String msg = control.proprietarioControl.deletarProprietario(proprietario);
         LbMensagem.setText(msg);
@@ -527,6 +538,10 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
      
     }
     
+    /**
+     * Seta valores em campos da tela baseado em valores de proprietario.
+     * @param _proprietario 
+     */
     private void setValues(Proprietario _proprietario){
         TxNome.setText(_proprietario.getNome());
         TxNomeMeio.setText(_proprietario.getNomeDoMeio());
@@ -562,8 +577,6 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
         } catch (Exception ex) {
            // ex.printStackTrace();
         }
-
-       
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

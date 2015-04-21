@@ -168,16 +168,21 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Realiza a busca de proprietarios no sistema e os mostra em panel especifico.
+     * @param evt 
+     */
     private void BtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPesquisarActionPerformed
         // TODO add your handling code here:
         String nome = TxNome.getText();
         Boolean desativados = CheckBoxDesativados.isSelected();
         
+        //Limpa panel antes de realizar pesquisa
         PanelProprietarios.removeAll();
         PanelProprietarios.revalidate();
         PanelProprietarios.repaint();
         
-        if(nome.isEmpty() ){
+        if(nome.isEmpty() ){//Checa se nome esta vazio
             LbMensagem.setText("Digite o nome para pesquisar.");
         }else{
             LbMensagem.setText("");
@@ -185,12 +190,13 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
             
             int i = 1;
             for(Proprietario p : proprietarios){
-                //Cria novo label 
+                //Cria novo label para nome do proprietario
                 JLabel label = new JLabel();  
-                label.setText(p.getNome() + " " + p.getSobrenome());
-                label.setName("LbProprietario"+i);  
-                label.setSize(label.getPreferredSize());
-                label.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY() + (30*i));
+                label.setText(p.getNome() + " " + p.getSobrenome()); //seta texto
+                label.setName("LbProprietario"+i);   //seta nome de label
+                label.setSize(label.getPreferredSize()); //seta tamanho
+                label.setLocation((int)label.getLocation().getX() + 200, 
+                                  (int)label.getLocation().getY() + (30*i));//seta localizacaao
                 
                 //Cria novo botao
                 JButton button = new JButton();
@@ -201,23 +207,23 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                 //cria novo listener para botao
                 button.addActionListener(new ButtonListenerProprietario(p, control));
                 
+                //Adiciona listener para limpar panel quando botao editar eh presionado
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         cleanPanel();
                     }
                 });
+                //end listener
                 
                 button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
                 
-                if(i > 3){
-                    PanelProprietarios.setSize(PanelProprietarios.getWidth(), PanelProprietarios.getHeight()+30);
-                }
-                
+                //Adiciona novo botao ao panel
                 PanelProprietarios.add(label);
                 PanelProprietarios.add(button);
                 PanelProprietarios.revalidate();
                 PanelProprietarios.repaint();
+                //end adiciona novo botao ao panel
                 i++;
             }
         }
@@ -228,7 +234,9 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BtFecharActionPerformed
     
-    
+    /**
+     * Limpa panel de propriterarios completamente.
+     */
     private void cleanPanel(){
         PanelProprietarios.removeAll();
         PanelProprietarios.revalidate();

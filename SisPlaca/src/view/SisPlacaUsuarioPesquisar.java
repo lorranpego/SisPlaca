@@ -190,11 +190,13 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
         String usuario = TxUsuario.getText();
         Boolean desativados = CheckBoxDesativados.isSelected();
         
+        //Remove todos usuarios de panel antes de pesquisar
         PanelUsers.removeAll();
         PanelUsers.revalidate();
         PanelUsers.repaint();
+        //end remove todos usuarios
         
-        if(nome.isEmpty() && usuario.isEmpty()){
+        if(nome.isEmpty() && usuario.isEmpty()){//Checa se nome foi digitado
             LbMensagem.setText("Digite o nome ou o usuário para pesquisar.");
         }else{
             LbMensagem.setText("");
@@ -218,6 +220,7 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                 //cria novo listener para botao
                 button.addActionListener(new ButtonListenerUsuario(u, control));
                 
+                //Adicionado listener para limpar panel de usuario sempre que for escolhido um para editar.
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -227,14 +230,12 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                 
                 button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
                 
-                if(i > 3){
-                    PanelUsers.setSize(PanelUsers.getWidth(), PanelUsers.getHeight()+30);
-                }
-                
+                //Adiciona novo usuario em panel
                 PanelUsers.add(label);
                 PanelUsers.add(button);
                 PanelUsers.revalidate();
                 PanelUsers.repaint();
+                //end adiciona novo usuario
                 i++;
             }
         }
@@ -244,12 +245,16 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BtFecharActionPerformed
-
+    
+    /**
+     * Limpa panel de usuarios
+     */
     private void cleanPanel(){
         PanelUsers.removeAll();
         PanelUsers.revalidate();
         PanelUsers.repaint();
     }
+    
     /**
      * @param args the command line arguments
      */

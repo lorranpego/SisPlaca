@@ -62,9 +62,12 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    /**
+     * Fecha janela.
+     */
     private void fecha(){
         this.dispose();
-   }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -350,6 +353,7 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
         }
         //end selecao de data
         
+        //Selecao de sexo
         char sexo;
         String s = String.valueOf(OpSexo.getSelectedItem());;
         if(s.equals("Masculino")){
@@ -358,6 +362,8 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
         else{
             sexo = 'F';
         }
+        //end secao de sexo
+        
         //Informacoes de contato
         String email = TxEmail.getText();
         String telefone = TxTelefone.getText();
@@ -435,7 +441,6 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
                     //ex.printStackTrace();
                 }
             }
-
         }
     }//GEN-LAST:event_BtImagemActionPerformed
 
