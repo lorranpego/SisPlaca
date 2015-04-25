@@ -5,10 +5,31 @@
  */
 package controller;
 
+import DAO.CarroDAO;
+import model.Carro;
+
 /**
  *
  * @author Lorran
  */
 public class CarroControl {
+    
+     CarroDAO dao = new CarroDAO();
+    
+    /**
+     * Salva novo carro em banco de dados
+     * @param _carro
+     * @return Integer
+     */
+    public int salvarCarro(Carro _carro){
+        if(_carro.getProprietarios() != null){    
+            if(dao.salvarCarro(_carro)){
+                return 1; //salvo com sucesso
+            }
+        }else{
+            return -1;//necessario incluir pelo menos um proprietario
+        }
+        return 0;
+    }
     
 }
