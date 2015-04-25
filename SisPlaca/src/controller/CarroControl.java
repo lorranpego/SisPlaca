@@ -14,7 +14,11 @@ import model.Carro;
  */
 public class CarroControl {
     
+    //CarroDAO
      CarroDAO dao = new CarroDAO();
+     
+     //Carro utilizado para realizar cadastro
+     public static Carro carro = new Carro();
     
     /**
      * Salva novo carro em banco de dados

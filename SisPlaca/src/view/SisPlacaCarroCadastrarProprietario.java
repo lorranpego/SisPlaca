@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package view;
@@ -14,16 +15,16 @@ import model.Proprietario;
 
 /**
  *
- * @author alunolab04
+ * @author Lorran
  */
-public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
-    
+public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
     Control control;
+    
     /**
-     * Creates new form SisPlacaUsuarioPesquisar
-     * @param _control
+     * Creates new form SisPlacaCadastrarCarroProprietario
+     *  * @param _control
      */
-    public SisPlacaProprietarioPesquisar(Control _control) {
+    public SisPlacaCarroCadastrarProprietario(Control _control) {
         control = _control;
         initComponents();
         
@@ -40,52 +41,17 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        LbNome = new javax.swing.JLabel();
-        TxNome = new javax.swing.JTextField();
-        BtPesquisar = new javax.swing.JButton();
-        LbMensagem = new javax.swing.JLabel();
-        BtFechar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        CheckBoxDesativados = new javax.swing.JCheckBox();
-        LbMostrarAtivo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PanelProprietarios = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        TxNome = new javax.swing.JTextField();
+        BtPesquisar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        LbNome = new javax.swing.JLabel();
+        LbMensagem = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        BtFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SisPlaca - Pesquisar Usuário");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("PESQUISAR PROPRIETÁRIO");
-
-        LbNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LbNome.setText("Nome");
-
-        BtPesquisar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtPesquisar.setText("PESQUISAR");
-        BtPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtPesquisarActionPerformed(evt);
-            }
-        });
-
-        LbMensagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        LbMensagem.setForeground(new java.awt.Color(255, 0, 0));
-        LbMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        BtFechar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtFechar.setText("FECHAR");
-        BtFechar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtFecharActionPerformed(evt);
-            }
-        });
-
-        CheckBoxDesativados.setText("Mostrar Desativados");
-
-        LbMostrarAtivo.setText("Mostrar Proprietários Desativados");
 
         javax.swing.GroupLayout PanelProprietariosLayout = new javax.swing.GroupLayout(PanelProprietarios);
         PanelProprietarios.setLayout(PanelProprietariosLayout);
@@ -100,40 +66,62 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(PanelProprietarios);
 
-        setJMenuBar(jMenuBar1);
+        BtPesquisar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtPesquisar.setText("PESQUISAR");
+        BtPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtPesquisarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("PESQUISAR PROPRIETÁRIO");
+
+        LbNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LbNome.setText("Nome");
+
+        LbMensagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LbMensagem.setForeground(new java.awt.Color(255, 0, 0));
+        LbMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        BtFechar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtFechar.setText("FECHAR");
+        BtFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtFecharActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LbMensagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
-                                .addComponent(BtFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(134, 134, 134))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CheckBoxDesativados)
-                            .addComponent(LbMostrarAtivo))
-                        .addGap(96, 96, 96))))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 479, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(125, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(LbMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -141,24 +129,17 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(LbNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LbMostrarAtivo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CheckBoxDesativados)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(88, 88, 88)
+                .addComponent(LbNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtPesquisar)
                     .addComponent(BtFechar))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,45 +149,40 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Realiza a busca de proprietarios no sistema e os mostra em panel especifico.
-     * @param evt 
-     */
     private void BtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPesquisarActionPerformed
         // TODO add your handling code here:
         String nome = TxNome.getText();
-        Boolean desativados = CheckBoxDesativados.isSelected();
-        
+
         //Limpa panel antes de realizar pesquisa
         PanelProprietarios.removeAll();
         PanelProprietarios.revalidate();
         PanelProprietarios.repaint();
-        
+
         if(nome.isEmpty() ){//Checa se nome esta vazio
             LbMensagem.setText("Digite o nome para pesquisar.");
         }else{
             LbMensagem.setText("");
-            ArrayList<Proprietario> proprietarios = control.proprietarioControl.pesquisarProprietarios(nome, desativados);
-            
+            ArrayList<Proprietario> proprietarios = control.proprietarioControl.pesquisarProprietarios(nome, false);
+
             int i = 1;
             for(Proprietario p : proprietarios){
                 //Cria novo label para nome do proprietario
-                JLabel label = new JLabel();  
+                JLabel label = new JLabel();
                 label.setText(p.getNome() + " " + p.getSobrenome()); //seta texto
                 label.setName("LbProprietario"+i);   //seta nome de label
                 label.setSize(label.getPreferredSize()); //seta tamanho
-                label.setLocation((int)label.getLocation().getX() + 200, 
-                                  (int)label.getLocation().getY() + (30*i));//seta localizacaao
-                
+                label.setLocation((int)label.getLocation().getX() + 50,
+                    (int)label.getLocation().getY() + (30*i));//seta localizacaao
+
                 //Cria novo botao
                 JButton button = new JButton();
                 button.setName("BtProprietario"+i);
-                button.setText("Editar");
+                button.setText("Selecionar");
                 button.setSize(button.getPreferredSize());
-                
+
                 //cria novo listener para botao
-                button.addActionListener(new ButtonListenerProprietario(p, control));
-                
+               button.addActionListener(new ButtonLiestenerCarroAddProprietario(p, control));
+
                 //Adiciona listener para limpar panel quando botao editar eh presionado
                 button.addActionListener(new ActionListener() {
                     @Override
@@ -215,9 +191,9 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                     }
                 });
                 //end listener
-                
+
                 button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
-                
+
                 //Adiciona novo botao ao panel
                 PanelProprietarios.add(label);
                 PanelProprietarios.add(button);
@@ -233,15 +209,16 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BtFecharActionPerformed
-    
+
     /**
-     * Limpa panel de propriterarios completamente.
-     */
+    * Limpa panel de propriterarios completamente.
+    */
     private void cleanPanel(){
         PanelProprietarios.removeAll();
         PanelProprietarios.revalidate();
         PanelProprietarios.repaint();
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -259,33 +236,28 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaCarroCadastrarProprietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaCarroCadastrarProprietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaCarroCadastrarProprietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaCarroCadastrarProprietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        
+
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtFechar;
     private javax.swing.JButton BtPesquisar;
-    private javax.swing.JCheckBox CheckBoxDesativados;
     private javax.swing.JLabel LbMensagem;
-    private javax.swing.JLabel LbMostrarAtivo;
     private javax.swing.JLabel LbNome;
     private javax.swing.JPanel PanelProprietarios;
     private javax.swing.JTextField TxNome;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
-
 }

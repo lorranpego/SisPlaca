@@ -55,7 +55,7 @@ public class ProprietarioControl {
      * @param _nome
      * @return 
      */
-    public ArrayList<Proprietario> pesquisarUsuarios(String _nome, Boolean _ativados){
+    public ArrayList<Proprietario> pesquisarProprietarios(String _nome, Boolean _ativados){
         return dao.buscarProprietarios(_nome, _ativados);
     }
 
