@@ -187,7 +187,7 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        cleanPanel();
+                        fechar();
                     }
                 });
                 //end listener
@@ -219,6 +219,9 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
         PanelProprietarios.repaint();
     }
     
+    private void fechar(){
+        this.dispose();
+    }
     /**
      * @param args the command line arguments
      */

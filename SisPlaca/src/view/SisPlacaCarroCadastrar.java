@@ -304,6 +304,7 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
         String marca = TxMarca.getText();
         String modelo = TxModelo.getText();
         String cor = TxCor.getText();
+        System.out.println(control.carroControl.carro.getProprietarios());
         
         //Checagem de valores
         if(placa.isEmpty() || marca.isEmpty() || modelo.isEmpty() 
