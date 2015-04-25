@@ -5,7 +5,6 @@
  */
 package model;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Carro {
     
-    private int id;
+    private Long Id;
     private String placa;
     private String marca;
     private String modelo;
@@ -35,8 +34,8 @@ public class Carro {
         this.proprietarios = proprietarios;
     }
 
-    public Carro(int id, String placa, String marca, String modelo, String cor, int ativo, byte[] foto, ArrayList<Proprietario> proprietarios) {
-        this.id = id;
+    public Carro(Long Id, String placa, String marca, String modelo, String cor, int ativo, byte[] foto, ArrayList<Proprietario> proprietarios) {
+        this.Id = Id;
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -51,12 +50,12 @@ public class Carro {
     }
     
     
-    public int getId() {
-        return id;
+    public Long getId() {
+        return Id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(Long id) {
+        this.Id = Id;
     }
 
     public String getPlaca() {
