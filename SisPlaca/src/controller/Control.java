@@ -46,6 +46,7 @@ public class Control {
      * Get lista de usuarios pesquisados.
      * @param _nome
      * @param _usuario
+     * @param _desativados
      * @return 
      */
     public ArrayList<Usuario> getUsuarios(String _nome, String _usuario, Boolean _desativados){
