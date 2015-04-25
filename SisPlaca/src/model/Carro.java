@@ -5,8 +5,6 @@
  */
 package model;
 
-import java.awt.Image;
-
 /**
  *
  * @author lorran
@@ -19,11 +17,11 @@ public class Carro {
     private String modelo;
     private String cor;
     private int ativo;
-    private Image foto; //Checar se tipo deve ser Image
+    private byte[] foto;
 
     
     
-    public Carro(String placa, String marca, String modelo, String cor, int ativo, Image foto) {
+    public Carro(String placa, String marca, String modelo, String cor, int ativo, byte[] foto) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -32,7 +30,7 @@ public class Carro {
         this.foto = foto;
     }
 
-    public Carro(int id, String placa, String marca, String modelo, String cor, int ativo, Image foto) {
+    public Carro(int id, String placa, String marca, String modelo, String cor, int ativo, byte[] foto) {
         this.id = id;
         this.placa = placa;
         this.marca = marca;
@@ -94,11 +92,11 @@ public class Carro {
         this.ativo = ativo;
     }
 
-    public Image getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(Image foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
     
