@@ -149,7 +149,7 @@ public class CarroDAO {
         Connection conn = DAOBase.getConn();
         PreparedStatement stmt = null, stmProp = null;
         
-        ArrayList<Proprietario> proprietarios = new ArrayList<>();
+        ArrayList<Proprietario> proprietarios;
         ArrayList<Carro> carros = new ArrayList<>();
         Proprietario proprietarioBD;
         Carro carroDB;

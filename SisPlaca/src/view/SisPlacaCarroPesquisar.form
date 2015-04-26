@@ -117,7 +117,7 @@
           <Font name="Tahoma" size="12" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="PESQUISAR PROPRIET&#xc1;RIO"/>
+        <Property name="text" type="java.lang.String" value="PESQUISAR CARRO"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="LbNome">

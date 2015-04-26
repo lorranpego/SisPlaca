@@ -61,7 +61,7 @@ public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("PESQUISAR PROPRIETÁRIO");
+        jLabel3.setText("PESQUISAR CARRO");
 
         LbNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LbNome.setText("Placa");
