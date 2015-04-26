@@ -41,7 +41,7 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
     public SisPlacaCarroCadastrar(Control _control) {
         control = _control;
         //Reseta carro antes de comecar cadastro de novo carro.
-        control.carroControl.resetaCarro();
+        Control.carroControl.resetaCarro();
         
         initComponents();
         
@@ -324,9 +324,9 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
                 || cor.isEmpty() || fotoCarro == null )
             LbMensagem.setText("Os campos marcados com asterisco não podem estar vazios.");
         else{
-            Carro novoCarro = new Carro(placa, marca, modelo, cor, 1, fotoCarro, control.carroControl.carro.getProprietarios());
+            Carro novoCarro = new Carro(placa, marca, modelo, cor, 1, fotoCarro, Control.carroControl.carro.getProprietarios());
 
-            int result = control.carroControl.salvarCarro(novoCarro);
+            int result = Control.carroControl.salvarCarro(novoCarro);
 
             switch(result){
                 case -1:{
@@ -492,15 +492,18 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaCarroCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaCarroCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaCarroCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SisPlacaCarroCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
