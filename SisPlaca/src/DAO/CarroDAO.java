@@ -28,7 +28,7 @@ public class CarroDAO {
     public boolean salvarCarro(Carro _carro){
         Connection conn = DAOBase.getConn();
 
-        PreparedStatement stm, stmCarro, stmProprietarios;
+        PreparedStatement stm, stmCarro, stmProprietarios = null;
         Integer id_carro = null;
 
         try{
@@ -60,6 +60,8 @@ public class CarroDAO {
                 stmProprietarios.setInt(1, (int) prop.getId());
                 stmProprietarios.setInt(2, id_carro);
             }       
+            stmProprietarios.executeUpdate();
+            conn.commit();
             //end insercao de proprietarios
             
             

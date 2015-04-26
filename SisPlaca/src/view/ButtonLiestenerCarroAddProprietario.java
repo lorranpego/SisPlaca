@@ -22,11 +22,14 @@ public class ButtonLiestenerCarroAddProprietario implements ActionListener {
         this.proprietario = _p;
         this.control = _control;
     }
-
+    
+    /**
+     * Adiciona novo proprietario a lista de proprietarios do carro.
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.control.carroControl.carro.getProprietarios().add(proprietario);
-      //      new SisPlacaProprietarioEditar(control, this.proprietario).setVisible(true);
+        Control.carroControl.carro.getProprietarios().add(proprietario);
     }
     
 }

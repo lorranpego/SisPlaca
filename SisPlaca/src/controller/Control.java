@@ -19,7 +19,10 @@ public class Control {
     
     //Control das funcoes 
     public UsuarioControl userControl = new UsuarioControl();
-    public CarroControl carroControl = new CarroControl();
+    
+    //Controle de carro precisa ser static para que seja possivel pegar proprietarios ja cadastrados.
+    public static CarroControl carroControl = new CarroControl(); 
+    
     public PlacaControl placaControl = new PlacaControl();
     public ProprietarioControl proprietarioControl = new ProprietarioControl();
     

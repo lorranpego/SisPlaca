@@ -16,9 +16,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 import model.Carro;
+import model.Proprietario;
 
 /**
  *
@@ -34,10 +40,12 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
      */
     public SisPlacaCarroCadastrar(Control _control) {
         control = _control;
+        control.carroControl.resetaCarro();
         initComponents();
         
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        
     }
     
     /**
@@ -155,7 +163,7 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
         LbFoto.setText("FOTO *");
 
         BtAddProprietarios.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtAddProprietarios.setText("ADICIONAR PROPRIETARIO");
+        BtAddProprietarios.setText("ADICIONAR PROPRIETÁRIO");
         BtAddProprietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtAddProprietariosActionPerformed(evt);
@@ -198,12 +206,12 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
                         .addGap(54, 54, 54))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(foto, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(foto, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(LbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BtImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 86, Short.MAX_VALUE)))
+                                .addGap(0, 91, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -295,7 +303,11 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
     private void TxCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxCorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxCorActionPerformed
-
+    
+    /**
+     * 
+     * @param evt 
+     */
     @SuppressWarnings("empty-statement")
     private void BtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalvarActionPerformed
         //Receber valores de view
@@ -304,17 +316,16 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
         String marca = TxMarca.getText();
         String modelo = TxModelo.getText();
         String cor = TxCor.getText();
-        System.out.println(control.carroControl.carro.getProprietarios());
         
         //Checagem de valores
         if(placa.isEmpty() || marca.isEmpty() || modelo.isEmpty() 
-                || cor.isEmpty() || fotoCarro == null)
+                || cor.isEmpty() || fotoCarro == null )
             LbMensagem.setText("Os campos marcados com asterisco não podem estar vazios.");
         else{
-           // Carro novoCarro = new Carro(placa, marca, modelo, cor, 1, fotoCarro, null);
-            System.out.println(control.carroControl.carro.getProprietarios());
-            //int result = control.carroControl.salvarCarro(novoCarro);
-            int result = 1;
+            Carro novoCarro = new Carro(placa, marca, modelo, cor, 1, fotoCarro, control.carroControl.carro.getProprietarios());
+            System.out.println(novoCarro.getPlaca());
+            int result = control.carroControl.salvarCarro(novoCarro);
+
             switch(result){
                 case -1:{
                         LbMensagem.setForeground(Color.red);
@@ -324,6 +335,11 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
                 case 0:{
                         LbMensagem.setForeground(Color.red);
                         LbMensagem.setText("Algum erro aconteceu.");
+                        break;
+                }
+                case 2:{
+                        LbMensagem.setForeground(Color.red);
+                        LbMensagem.setText("Placa de carro inválida. - Formado deve ser AAA-0000");
                         break;
                 }
                 case 1:{
@@ -344,10 +360,69 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtSalvarActionPerformed
 
+    /**
+     * Fecha janela de cadastrar carro.
+     * @param evt 
+     */
     private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
         this.fecha();
     }//GEN-LAST:event_BtCancelarActionPerformed
     
+    /**
+     * Escreve nome de proprietarios selecionados e botao para excluir qualquer um deles.
+     * @param _proprietarios 
+     */
+    private void adicionarProprietarios(ArrayList<Proprietario> _proprietarios){
+        int i = 1;
+        
+        //Lima panel antes de recolocar proprietarios selecionados
+        PanelProprietarios.removeAll();
+        
+        for(final Proprietario p : _proprietarios){
+            //Cria novo label para nome do proprietario
+            JLabel label = new JLabel();
+            label.setText(p.getNome() + " " + p.getSobrenome()); //seta texto
+            label.setName("LbProprietario"+i);   //seta nome de label
+            label.setSize(label.getPreferredSize()); //seta tamanho
+            label.setLocation((int)label.getLocation().getX() + 50,
+                (int)label.getLocation().getY() + (30*i));//seta localizacaao
+
+            //Cria novo botao
+            JButton button = new JButton();
+            button.setName("BtProprietario"+i);
+            button.setText("Excluir");
+            button.setSize(button.getPreferredSize());
+            
+            //Adiciona listener para retirar prorpietario de panel do panel
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    retiraProprietario(p);
+                }
+            });
+            //end listener
+
+            button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
+
+            //Adiciona novo botao ao panel
+            PanelProprietarios.add(label);
+            PanelProprietarios.add(button);
+            PanelProprietarios.revalidate();
+            PanelProprietarios.repaint();
+            //end adiciona novo botao ao panel
+            i++;
+        }
+    }
+    
+    /**
+     * Retira proprietario de lista de proprietarios de carro.
+     * @param _p 
+     */
+    private void retiraProprietario(Proprietario _p){
+        Control.carroControl.carro.getProprietarios().remove(_p);
+        adicionarProprietarios(Control.carroControl.carro.getProprietarios());
+    }
+
     /**
      * Seleciona imagem a mostra em jlabel.
      * @param evt 
@@ -383,11 +458,20 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_BtImagemActionPerformed
 
     /**
-     * Abre pop-up para selecao de proprietario do carro.
+     * Abre pop-up para selecao de proprietario do carro e seta catch de evento.
      * @param evt 
      */
     private void BtAddProprietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAddProprietariosActionPerformed
-        new SisPlacaCarroCadastrarProprietario(control).setVisible(true);
+        SisPlacaCarroCadastrarProprietario carroProprietario = new SisPlacaCarroCadastrarProprietario(control);
+        carroProprietario.setVisible(true);
+        
+        //Recupera o evento de quando o pop-up eh fechado para atualizar lista de proprietarios selecionados
+        carroProprietario.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent evento)  {  
+                adicionarProprietarios(Control.carroControl.carro.getProprietarios());
+            }
+        });  
     }//GEN-LAST:event_BtAddProprietariosActionPerformed
 
     /**
