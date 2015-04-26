@@ -27,6 +27,19 @@ public class Util {
         return m.matches();
     }
     
+     /**
+     * Checa se placa de carro é válida.
+     * @param _placa
+     * @return boolean
+     */
+    public static boolean checkPlaca(String _placa){
+        //verificar email e telefone
+        Pattern p = Pattern.compile("([A-Z]|[a-z][A-Z]|[a-z][A-Z]|[a-z])+-+[0-9][0-9][0-9][0-9]"); 
+        Matcher m = p.matcher(_placa);
+
+        return m.matches();
+    }
+    
     /**Prepare dates to be inserted in the databases.
      * @param data
      * @return String 
