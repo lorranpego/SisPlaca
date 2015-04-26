@@ -140,7 +140,7 @@ public class CarroDAO {
     }
     
      /**
-     * Busca usuarios no banco de dados baseado em seu nome ou login.
+     * Busca carros no banco de dados baseado em sua placa ou modelo.
      * @param _placa
      * @param _modelo
      * @param _ativado
@@ -212,5 +212,38 @@ public class CarroDAO {
         }
         
         return carros;
+    }
+    
+     /**
+     * Busca carro no banco de dados baseado em sua placa.
+     * @param _placa
+     * @return 
+     */
+    public int buscarCarro(String _placa){
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stmt = null, stmProp = null;
+        
+        
+        String queryPlaca = "";
+        
+        if(!_placa.isEmpty())
+            queryPlaca = " cl_placa like '"+_placa+"' ";
+        
+        try{
+            //Busca por placa
+            stmt = conn.prepareStatement("SELECT cl_id FROM tb_carros "
+                + "WHERE ( "+ queryPlaca+" ) " + " AND cl_ativo = 1 ");
+            
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+              return 0;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Database error");
+           // e.printStackTrace();
+        }
+        
+        return 1;
     }
 }
