@@ -22,7 +22,7 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
     
     /**
      * Creates new form SisPlacaCadastrarCarroProprietario
-     *  * @param _control
+     * @param _control
      */
     public SisPlacaCarroCadastrarProprietario(Control _control) {
         control = _control;
@@ -47,7 +47,6 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
         BtPesquisar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         LbNome = new javax.swing.JLabel();
-        LbMensagem = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         BtFechar = new javax.swing.JButton();
 
@@ -81,10 +80,6 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
         LbNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LbNome.setText("Nome");
 
-        LbMensagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        LbMensagem.setForeground(new java.awt.Color(255, 0, 0));
-        LbMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         BtFechar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtFechar.setText("FECHAR");
         BtFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,15 +108,10 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
                     .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(LbMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(BtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,21 +119,18 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(88, 88, 88)
+                .addGap(21, 21, 21)
                 .addComponent(LbNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtPesquisar)
                     .addComponent(BtFechar))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -158,50 +145,46 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
         PanelProprietarios.revalidate();
         PanelProprietarios.repaint();
 
-        if(nome.isEmpty() ){//Checa se nome esta vazio
-            LbMensagem.setText("Digite o nome para pesquisar.");
-        }else{
-            LbMensagem.setText("");
-            ArrayList<Proprietario> proprietarios = control.proprietarioControl.pesquisarProprietarios(nome, false);
+        ArrayList<Proprietario> proprietarios = control.carroControl.pesquisarProprietarios(nome, 
+                control.carroControl.carro.getProprietarios());
 
-            int i = 1;
-            for(Proprietario p : proprietarios){
-                //Cria novo label para nome do proprietario
-                JLabel label = new JLabel();
-                label.setText(p.getNome() + " " + p.getSobrenome()); //seta texto
-                label.setName("LbProprietario"+i);   //seta nome de label
-                label.setSize(label.getPreferredSize()); //seta tamanho
-                label.setLocation((int)label.getLocation().getX() + 50,
-                    (int)label.getLocation().getY() + (30*i));//seta localizacaao
+        int i = 1;
+        for(Proprietario p : proprietarios){
+            //Cria novo label para nome do proprietario
+            JLabel label = new JLabel();
+            label.setText(p.getNome() + " " + p.getSobrenome()); //seta texto
+            label.setName("LbProprietario"+i);   //seta nome de label
+            label.setSize(label.getPreferredSize()); //seta tamanho
+            label.setLocation((int)label.getLocation().getX() + 50,
+                (int)label.getLocation().getY() + (30*i));//seta localizacaao
 
-                //Cria novo botao
-                JButton button = new JButton();
-                button.setName("BtProprietario"+i);
-                button.setText("Selecionar");
-                button.setSize(button.getPreferredSize());
+            //Cria novo botao
+            JButton button = new JButton();
+            button.setName("BtProprietario"+i);
+            button.setText("Selecionar");
+            button.setSize(button.getPreferredSize());
 
-                //cria novo listener para botao
-               button.addActionListener(new ButtonLiestenerCarroAddProprietario(p, control));
+            //cria novo listener para botao
+           button.addActionListener(new ButtonLiestenerCarroAddProprietario(p, control));
 
-                //Adiciona listener para limpar panel quando botao editar eh presionado
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        fechar();
-                    }
-                });
-                //end listener
+            //Adiciona listener para fechar janela quando proprietario for selecionado
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    fechar();
+                }
+            });
+            //end listener
 
-                button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
+            button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
 
-                //Adiciona novo botao ao panel
-                PanelProprietarios.add(label);
-                PanelProprietarios.add(button);
-                PanelProprietarios.revalidate();
-                PanelProprietarios.repaint();
-                //end adiciona novo botao ao panel
-                i++;
-            }
+            //Adiciona novo botao ao panel
+            PanelProprietarios.add(label);
+            PanelProprietarios.add(button);
+            PanelProprietarios.revalidate();
+            PanelProprietarios.repaint();
+            //end adiciona novo botao ao panel
+            i++;
         }
     }//GEN-LAST:event_BtPesquisarActionPerformed
 
@@ -255,7 +238,6 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtFechar;
     private javax.swing.JButton BtPesquisar;
-    private javax.swing.JLabel LbMensagem;
     private javax.swing.JLabel LbNome;
     private javax.swing.JPanel PanelProprietarios;
     private javax.swing.JTextField TxNome;
