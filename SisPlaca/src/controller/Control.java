@@ -19,7 +19,10 @@ public class Control {
     
     //Control das funcoes 
     public UsuarioControl userControl = new UsuarioControl();
-    public CarroControl carroControl = new CarroControl();
+    
+    //Controle de carro precisa ser static para que seja possivel pegar proprietarios ja cadastrados.
+    public static CarroControl carroControl = new CarroControl(); 
+    
     public PlacaControl placaControl = new PlacaControl();
     public ProprietarioControl proprietarioControl = new ProprietarioControl();
     
@@ -46,6 +49,7 @@ public class Control {
      * Get lista de usuarios pesquisados.
      * @param _nome
      * @param _usuario
+     * @param _desativados
      * @return 
      */
     public ArrayList<Usuario> getUsuarios(String _nome, String _usuario, Boolean _desativados){

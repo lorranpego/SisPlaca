@@ -10,20 +10,21 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import model.Carro;
 import model.Proprietario;
 
 /**
  *
  * @author alunolab04
  */
-public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
+public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
     
     Control control;
     /**
      * Creates new form SisPlacaUsuarioPesquisar
      * @param _control
      */
-    public SisPlacaProprietarioPesquisar(Control _control) {
+    public SisPlacaCarroPesquisar(Control _control) {
         control = _control;
         initComponents();
         
@@ -42,7 +43,7 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         LbNome = new javax.swing.JLabel();
-        TxNome = new javax.swing.JTextField();
+        TxPlaca = new javax.swing.JTextField();
         BtPesquisar = new javax.swing.JButton();
         LbMensagem = new javax.swing.JLabel();
         BtFechar = new javax.swing.JButton();
@@ -51,6 +52,8 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         LbMostrarAtivo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PanelProprietarios = new javax.swing.JPanel();
+        LbModelo = new javax.swing.JLabel();
+        TxModelo = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,10 +61,10 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("PESQUISAR PROPRIETÁRIO");
+        jLabel3.setText("PESQUISAR CARRO");
 
         LbNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LbNome.setText("Nome");
+        LbNome.setText("Placa");
 
         BtPesquisar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtPesquisar.setText("PESQUISAR");
@@ -100,6 +103,8 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(PanelProprietarios);
 
+        LbModelo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LbModelo.setText("Modelo");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,23 +114,12 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LbMensagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LbMensagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
-                                .addComponent(BtFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(134, 134, 134))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CheckBoxDesativados)
-                            .addComponent(LbMostrarAtivo))
-                        .addGap(96, 96, 96))))
+                        .addComponent(BtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                        .addComponent(BtFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(134, 134, 134))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,23 +129,39 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CheckBoxDesativados)
+                    .addComponent(LbMostrarAtivo))
+                .addGap(96, 96, 96))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(LbNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LbMostrarAtivo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LbMostrarAtivo)
+                        .addComponent(LbModelo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CheckBoxDesativados)))
+                        .addComponent(TxModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(LbNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CheckBoxDesativados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -174,7 +184,8 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
      */
     private void BtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPesquisarActionPerformed
         // TODO add your handling code here:
-        String nome = TxNome.getText();
+        String placa = TxPlaca.getText();
+        String modelo = TxModelo.getText();
         Boolean desativados = CheckBoxDesativados.isSelected();
         
         //Limpa panel antes de realizar pesquisa
@@ -182,30 +193,30 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         PanelProprietarios.revalidate();
         PanelProprietarios.repaint();
         
-        if(nome.isEmpty() ){//Checa se nome esta vazio
-            LbMensagem.setText("Digite o nome para pesquisar.");
+        if(placa.isEmpty() && modelo.isEmpty() ){//Checa se placa esta vazio
+            LbMensagem.setText("Digite a placa ou o modelo para pesquisar.");
         }else{
             LbMensagem.setText("");
-            ArrayList<Proprietario> proprietarios = control.proprietarioControl.pesquisarProprietarios(nome, desativados);
+            ArrayList<Carro> carros = control.carroControl.pesquisarCarros(placa, modelo, desativados);
             
             int i = 1;
-            for(Proprietario p : proprietarios){
-                //Cria novo label para nome do proprietario
+            for(Carro c : carros){
+                //Cria novo label para placa do proprietario
                 JLabel label = new JLabel();  
-                label.setText(p.getNome() + " " + p.getSobrenome()); //seta texto
-                label.setName("LbProprietario"+i);   //seta nome de label
+                label.setText(c.toString()); //seta texto
+                label.setName("LbCarro"+i);   //seta placa de label
                 label.setSize(label.getPreferredSize()); //seta tamanho
-                label.setLocation((int)label.getLocation().getX() + 200, 
-                                  (int)label.getLocation().getY() + (30*i));//seta localizacaao
+                label.setLocation((int)label.getLocation().getX() + 100, 
+                                  (int)label.getLocation().getY() + (40*i));//seta localizacaao
                 
                 //Cria novo botao
                 JButton button = new JButton();
-                button.setName("BtProprietario"+i);
+                button.setName("BtCarro"+i);
                 button.setText("Editar");
                 button.setSize(button.getPreferredSize());
                 
                 //cria novo listener para botao
-                button.addActionListener(new ButtonListenerProprietario(p, control));
+                //button.addActionListener(new ButtonListenerProprietario(c, control));
                 
                 //Adiciona listener para limpar panel quando botao editar eh presionado
                 button.addActionListener(new ActionListener() {
@@ -216,7 +227,7 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                 });
                 //end listener
                 
-                button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
+                button.setLocation((int)label.getLocation().getX() + 400, (int)label.getLocation().getY());
                 
                 //Adiciona novo botao ao panel
                 PanelProprietarios.add(label);
@@ -259,14 +270,18 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaCarroPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaCarroPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaCarroPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SisPlacaProprietarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SisPlacaCarroPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -278,10 +293,12 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
     private javax.swing.JButton BtPesquisar;
     private javax.swing.JCheckBox CheckBoxDesativados;
     private javax.swing.JLabel LbMensagem;
+    private javax.swing.JLabel LbModelo;
     private javax.swing.JLabel LbMostrarAtivo;
     private javax.swing.JLabel LbNome;
     private javax.swing.JPanel PanelProprietarios;
-    private javax.swing.JTextField TxNome;
+    private javax.swing.JTextField TxModelo;
+    private javax.swing.JTextField TxPlaca;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

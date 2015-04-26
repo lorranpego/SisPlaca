@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,45 +13,49 @@ import java.awt.Image;
  */
 public class Carro {
     
-    private int id;
+    private Long Id;
     private String placa;
     private String marca;
     private String modelo;
     private String cor;
     private int ativo;
-    private Image foto; //Checar se tipo deve ser Image
+    private byte[] foto;
+    private ArrayList<Proprietario> proprietarios;
 
     
     
-    public Carro(String placa, String marca, String modelo, String cor, int ativo, Image foto) {
+    public Carro(String placa, String marca, String modelo, String cor, int ativo, byte[] foto, ArrayList<Proprietario> proprietarios) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
         this.ativo = ativo;
         this.foto = foto;
+        this.proprietarios = proprietarios;
     }
 
-    public Carro(int id, String placa, String marca, String modelo, String cor, int ativo, Image foto) {
-        this.id = id;
+    public Carro(Long Id, String placa, String marca, String modelo, String cor, int ativo, byte[] foto, ArrayList<Proprietario> proprietarios) {
+        this.Id = Id;
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
         this.ativo = ativo;
         this.foto = foto;
+        this.proprietarios = proprietarios;
     }
 
     public Carro() {
+        this.proprietarios = new ArrayList<>();
     }
     
     
-    public int getId() {
-        return id;
+    public Long getId() {
+        return Id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getPlaca() {
@@ -94,14 +98,26 @@ public class Carro {
         this.ativo = ativo;
     }
 
-    public Image getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(Image foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
-    
+
+    public ArrayList<Proprietario> getProprietarios() {
+        return proprietarios;
+    }
+
+    public void setProprietarios(ArrayList<Proprietario> proprietarios) {
+        this.proprietarios = proprietarios;
+    }
+
+    @Override
+    public String toString() {
+        return "Modelo: "+ this.modelo + ", Cor: " + this.cor + ", Marca: " + this.marca + ", Placa: " + this.placa; 
+    }
     
     
 }
