@@ -107,7 +107,8 @@ public class CarroDAO {
         try{
             //Busca por nome
             stmtUser = conn.prepareStatement("SELECT * FROM tb_proprietarios "
-                + "WHERE (cl_nome like ? or cl_nomeDoMeio like ? or cl_sobrenome like ?) AND cl_ativo = 1 " + query);
+                + "WHERE (cl_nome like ? or cl_nomeDoMeio like ? or cl_sobrenome like ?) AND cl_ativo = 1 " + query + " "
+                    + "ORDER BY cl_nome");
             
             stmtUser.setString(1, "%"+_nome+"%");
             stmtUser.setString(2, "%"+_nome+"%");
@@ -154,19 +155,24 @@ public class CarroDAO {
         Proprietario proprietarioBD;
         Carro carroDB;
         
-        String query = "";
+        String query = "", queryPlaca = "", queryModelo = "", queryOR = "";
         if(!_ativado)
-            query = " AND cl_ativo = 1";
+            query = " AND cl_ativo = 1 ";
         
+        if(!_placa.isEmpty())
+            queryPlaca = " cl_placa like '%"+_placa+"%' ";
+        
+        if(!_modelo.isEmpty())
+            queryModelo = " cl_modelo like '%"+_modelo+"%' ";
+        
+        if(!_placa.isEmpty() && !_modelo.isEmpty())
+            queryOR = " OR ";
+            
         try{
 
             //Busca por nome
             stmt = conn.prepareStatement("SELECT * FROM tb_carros "
-                + "WHERE (cl_placa like ? or cl_modelo like ? ) " + query);
-            
-            stmt.setString(1, "%"+_placa+"%");
-            stmt.setString(2, "%"+_modelo+"%");
-               
+                + "WHERE ( "+ queryPlaca+ queryOR + queryModelo +" ) " + query);
             
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

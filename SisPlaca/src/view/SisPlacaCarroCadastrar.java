@@ -6,6 +6,7 @@ package view;
 
 import controller.Control;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -404,6 +405,11 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
             //end listener
 
             button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
+            
+            if(i > 5){
+               PanelProprietarios.setPreferredSize( new Dimension(PanelProprietarios.getPreferredSize().width, 
+                                                    PanelProprietarios.getPreferredSize().height+30));
+            }
 
             //Adiciona novo botao ao panel
             PanelProprietarios.add(label);

@@ -6,6 +6,7 @@ package view;
 
 import listener.ButtonListenerUsuario;
 import controller.Control;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -230,6 +231,12 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                 });
                 
                 button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
+                
+                if(i > 5){
+               PanelUsers.setPreferredSize( new Dimension(PanelUsers.getPreferredSize().width, 
+                                                    PanelUsers.getPreferredSize().height+30));
+               
+                }
                 
                 //Adiciona novo usuario em panel
                 PanelUsers.add(label);
