@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import model.Carro;
-import model.Proprietario;
 
 /**
  *
@@ -197,7 +196,7 @@ public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
             LbMensagem.setText("Digite a placa ou o modelo para pesquisar.");
         }else{
             LbMensagem.setText("");
-            ArrayList<Carro> carros = control.carroControl.pesquisarCarros(placa, modelo, desativados);
+            ArrayList<Carro> carros = Control.carroControl.pesquisarCarros(placa, modelo, desativados);
             
             int i = 1;
             for(Carro c : carros){
@@ -216,7 +215,7 @@ public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
                 button.setSize(button.getPreferredSize());
                 
                 //cria novo listener para botao
-                //button.addActionListener(new ButtonListenerProprietario(c, control));
+                button.addActionListener(new ButtonListenerCarro(c, control));
                 
                 //Adiciona listener para limpar panel quando botao editar eh presionado
                 button.addActionListener(new ActionListener() {
