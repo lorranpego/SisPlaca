@@ -200,14 +200,10 @@ public class CarroDAO {
                 carros.add(carroDB);
             }
             
-            
-            
         } catch (SQLException e) {
             System.out.println("Database error");
-            e.printStackTrace();
+           // e.printStackTrace();
         }
-        
-        
         
         return carros;
     }
