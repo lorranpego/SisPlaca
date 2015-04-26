@@ -191,4 +191,47 @@ public class ProprietarioDAO {
         
         return false;
     }
+    
+     /**
+     * Busca usuarios no banco de dados baseado em seu id.
+     * @param _id
+     * @return 
+     */
+    public Proprietario buscarProprietario(long _id){
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stmtUser = null;
+        
+        Proprietario proprietarioBD = null;
+        
+        try{
+
+            //Busca por nome
+            stmtUser = conn.prepareStatement("SELECT * FROM tb_proprietarios "
+                + "WHERE cl_id = ? AND cl_ativo = 1");
+            
+            stmtUser.setInt(1, (int) _id);
+               
+            
+            ResultSet rs = stmtUser.executeQuery();
+            while (rs.next()) {
+                proprietarioBD = new Proprietario();
+                proprietarioBD.setId(_id);
+                proprietarioBD.setNome(rs.getString("cl_nome"));
+                proprietarioBD.setNomeDoMeio(rs.getString("cl_nomeDomeio"));
+                proprietarioBD.setSobrenome(rs.getString("cl_sobrenome"));
+                proprietarioBD.setNascimento(rs.getString("cl_nascimento"));
+                proprietarioBD.setEmail(rs.getString("cl_email"));
+                proprietarioBD.setSexo(rs.getString("cl_sexo").charAt(0));
+                proprietarioBD.setTelefone(rs.getString("cl_telefone"));
+                proprietarioBD.setAtivo(rs.getInt("cl_ativo"));
+                proprietarioBD.setEndereco(rs.getString("cl_endereco"));
+                proprietarioBD.setFoto(rs.getBytes("cl_foto"));
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Database error");
+           // e.printStackTrace();
+        }
+        return proprietarioBD;
+    }
 }
