@@ -105,6 +105,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
         menuCarros.add(menuCadastrarCarro);
 
         MenuPesquisarCarros.setText("Pesquisar");
+        MenuPesquisarCarros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuPesquisarCarrosActionPerformed(evt);
+            }
+        });
         menuCarros.add(MenuPesquisarCarros);
 
         jMenuBar1.add(menuCarros);
@@ -176,6 +181,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
         // TODO add your handling code here:
          new SisPlacaCarroCadastrar(control).setVisible(true);
     }//GEN-LAST:event_menuCadastrarCarroActionPerformed
+
+    private void MenuPesquisarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPesquisarCarrosActionPerformed
+        // TODO add your handling code here:
+        new SisPlacaCarroPesquisar(control).setVisible(true);
+    }//GEN-LAST:event_MenuPesquisarCarrosActionPerformed
 
     /**
      * @param args the command line arguments

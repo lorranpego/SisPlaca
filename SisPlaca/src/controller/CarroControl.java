@@ -60,5 +60,15 @@ public class CarroControl {
     public void resetaCarro(){
         this.carro = new Carro();
     }
-
+    
+     /**
+     * Pesquisa carros
+     * @param _placa
+     * @param _modelo
+     * @param _ativado
+     * @return 
+     */
+    public ArrayList<Carro> pesquisarCarros(String _placa, String _modelo, Boolean _ativado){
+        return dao.buscarCarros(_placa, _modelo, _ativado);
+    }
 }

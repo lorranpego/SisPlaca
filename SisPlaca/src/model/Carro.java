@@ -116,7 +116,7 @@ public class Carro {
 
     @Override
     public String toString() {
-        return this.modelo + " " + this.cor + " " + this.marca + " " + this.placa; 
+        return "Modelo: "+ this.modelo + ", Cor: " + this.cor + ", Marca: " + this.marca + ", Placa: " + this.placa; 
     }
     
     
