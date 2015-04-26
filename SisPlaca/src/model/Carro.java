@@ -113,5 +113,11 @@ public class Carro {
     public void setProprietarios(ArrayList<Proprietario> proprietarios) {
         this.proprietarios = proprietarios;
     }
+
+    @Override
+    public String toString() {
+        return this.modelo + " " + this.cor + " " + this.marca + " " + this.placa; 
+    }
+    
     
 }
