@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Carro;
 import model.Proprietario;
-import tools.Util;
 
 /**
  *
@@ -71,7 +70,7 @@ public class CarroDAO {
             
         }catch(SQLException e){
             System.out.println("Não Foi possivel salvar Carro.");
-            e.printStackTrace();
+            //e.printStackTrace();
             try{
                 conn.rollback(); 
                 conn.setAutoCommit(true);
@@ -87,6 +86,7 @@ public class CarroDAO {
      /**
      * Busca usuarios no banco de dados baseado em seu nome ou login.
      * @param _nome
+     * @param _proprietarios
      * @return 
      */
     public ArrayList<Proprietario> buscarProprietarios(String _nome, ArrayList<Proprietario> _proprietarios){
