@@ -345,6 +345,11 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
                         LbMensagem.setText("Placa de carro inválida. - Formado deve ser AAA-0000");
                         break;
                 }
+                 case 3:{
+                        LbMensagem.setForeground(Color.red);
+                        LbMensagem.setText("Placa de carro já cadastrada.");
+                        break;
+                }
                 case 1:{
                         LbMensagem.setText("Carro salvo com sucesso");
                         LbMensagem.setForeground(Color.blue);

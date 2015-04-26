@@ -31,8 +31,12 @@ public class CarroControl {
     public int salvarCarro(Carro _carro){
         if(!_carro.getProprietarios().isEmpty()){    
             if(Util.checkPlaca(_carro.getPlaca())){
-                if(dao.salvarCarro(_carro)){
-                    return 1; //salvo com sucesso
+                if(dao.buscarCarro(_carro.getPlaca()) == 1){
+                    if(dao.salvarCarro(_carro)){
+                        return 1; //salvo com sucesso
+                    }
+                }else{
+                    return 3;//placa ja existe no banco de dados
                 }
             }else{
                 return 2; //Placa de carro nao valida
