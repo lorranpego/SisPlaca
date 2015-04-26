@@ -4,6 +4,7 @@
  */
 package view;
 
+import listener.ButtonListenerProprietario;
 import controller.Control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
