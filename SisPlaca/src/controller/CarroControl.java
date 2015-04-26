@@ -54,6 +54,9 @@ public class CarroControl {
         return dao.buscarProprietarios(_nome, _proprietarios);
     }
     
+    /**
+     * Seta new carro.
+     */
     public void resetaCarro(){
         this.carro = new Carro();
     }

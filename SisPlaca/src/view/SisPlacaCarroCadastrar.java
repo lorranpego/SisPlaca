@@ -40,7 +40,9 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
      */
     public SisPlacaCarroCadastrar(Control _control) {
         control = _control;
+        //Reseta carro antes de comecar cadastro de novo carro.
         control.carroControl.resetaCarro();
+        
         initComponents();
         
         this.setResizable(false);
@@ -323,7 +325,7 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
             LbMensagem.setText("Os campos marcados com asterisco não podem estar vazios.");
         else{
             Carro novoCarro = new Carro(placa, marca, modelo, cor, 1, fotoCarro, control.carroControl.carro.getProprietarios());
-            System.out.println(novoCarro.getPlaca());
+
             int result = control.carroControl.salvarCarro(novoCarro);
 
             switch(result){
@@ -343,18 +345,17 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
                         break;
                 }
                 case 1:{
-                            LbMensagem.setText("Carro salvo com sucesso");
-                            LbMensagem.setForeground(Color.blue);
-                            
-                            Timer timer = new Timer(1500, new ActionListener(){
-                             @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    fecha();
-                                }
-                                }
-                            );
-                            timer.start();
-                            break;
+                        LbMensagem.setText("Carro salvo com sucesso");
+                        LbMensagem.setForeground(Color.blue);
+
+                        Timer timer = new Timer(1500, new ActionListener(){
+                         @Override
+                            public void actionPerformed(ActionEvent e) {
+                                fecha();
+                            }
+                        });
+                        timer.start();
+                        break;
                 }
             };
         }
@@ -465,7 +466,8 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
         SisPlacaCarroCadastrarProprietario carroProprietario = new SisPlacaCarroCadastrarProprietario(control);
         carroProprietario.setVisible(true);
         
-        //Recupera o evento de quando o pop-up eh fechado para atualizar lista de proprietarios selecionados
+        //Recupera o evento de quando o pop-up é fechado para 
+        //atualizar lista de proprietarios selecionados
         carroProprietario.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent evento)  {  
