@@ -232,7 +232,7 @@ public class CarroDAO {
         try{
             //Busca por placa
             stmt = conn.prepareStatement("SELECT cl_id FROM tb_carros "
-                + "WHERE ( "+ queryPlaca+" ) " + " AND cl_ativo = 1 ");
+                + "WHERE ( "+ queryPlaca+" ) " );
             
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
