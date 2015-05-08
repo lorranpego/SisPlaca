@@ -301,4 +301,32 @@ public class CarroDAO {
         
         return 1;
     }
+    
+    /**
+     * Altera situação de usuário.
+     * @param _carro
+     * @param _situacao
+     * @return boolean
+     */
+    public boolean ExcluirCarro(Carro _carro, int _situacao) {
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stm = null;
+        
+        try {
+            conn.setAutoCommit(false);
+            stm = conn.prepareStatement("UPDATE tb_carros set cl_ativo = " + 
+                                            _situacao + " WHERE cl_id = " + _carro.getId());
+            stm.executeUpdate();
+            conn.commit();
+            conn.setAutoCommit(true);
+            
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("Database error");
+            //e.printStackTrace();
+        }
+        
+        return false;
+    }
 }

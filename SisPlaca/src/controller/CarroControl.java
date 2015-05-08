@@ -90,4 +90,24 @@ public class CarroControl {
     public ArrayList<Carro> pesquisarCarros(String _placa, String _modelo, Boolean _ativado){
         return dao.buscarCarros(_placa, _modelo, _ativado);
     }
+    
+    /**
+     * Marca carro como deletado em banco de dados.
+     * @param _carro
+     * @return 
+     */
+     public String deletarCarro(Carro _carro) {
+         if(_carro.getAtivo() == 1){
+            if(dao.ExcluirCarro(_carro, 0)){
+                _carro.setAtivo(0);
+                return "Carro deletado com sucesso.";
+            }
+        }else{
+            if(dao.ExcluirCarro(_carro, 1))
+                _carro.setAtivo(1);
+                return "Carro ativado com sucesso.";
+        }
+        
+        return "Não foi possível modificar Carro.";
+    }
 }

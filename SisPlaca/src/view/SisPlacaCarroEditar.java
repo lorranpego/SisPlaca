@@ -94,6 +94,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         PanelProprietarios = new javax.swing.JPanel();
+        BtDeletar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -194,6 +195,14 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(PanelProprietarios);
 
+        BtDeletar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtDeletar.setForeground(new java.awt.Color(255, 0, 51));
+        BtDeletar.setText("EXCLUIR");
+        BtDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtDeletarActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,6 +220,8 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(BtSalvar)
+                                .addGap(200, 200, 200)
+                                .addComponent(BtDeletar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(BtCancelar))
                             .addComponent(LbMensagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -288,7 +299,8 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtSalvar)
-                    .addComponent(BtCancelar))
+                    .addComponent(BtCancelar)
+                    .addComponent(BtDeletar))
                 .addGap(13, 13, 13))
         );
 
@@ -492,6 +504,20 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_BtAddProprietariosActionPerformed
 
+    private void BtDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDeletarActionPerformed
+        String msg = Control.carroControl.deletarCarro(this.carro);
+        LbMensagem.setText(msg);
+        LbMensagem.setForeground(Color.blue);
+        Timer timer = new Timer(1500, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fecha();
+            }
+        }
+        );
+        timer.start();
+    }//GEN-LAST:event_BtDeletarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -547,6 +573,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAddProprietarios;
     private javax.swing.JButton BtCancelar;
+    private javax.swing.JButton BtDeletar;
     private java.awt.Button BtImagem;
     private javax.swing.JButton BtSalvar;
     private javax.swing.JLabel LbCor;
