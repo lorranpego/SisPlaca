@@ -43,6 +43,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
      * Creates new form SisPlacaUsuarioCadastrar
      *
      * @param _control
+     * @param _c
      */
     public SisPlacaCarroEditar(Control _control, Carro _c) {
         control = _control;
@@ -55,7 +56,6 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
 
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-
     }
 
     /**
@@ -348,16 +348,6 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                     LbMensagem.setText("Algum erro aconteceu.");
                     break;
                 }
-                case 2: {
-                    LbMensagem.setForeground(Color.red);
-                    LbMensagem.setText("Placa de carro inválida. - Formado deve ser AAA-0000");
-                    break;
-                }
-                case 3: {
-                    LbMensagem.setForeground(Color.red);
-                    LbMensagem.setText("Placa de carro já cadastrada.");
-                    break;
-                }
                 case 1: {
                     LbMensagem.setText("Carro salvo com sucesso");
                     LbMensagem.setForeground(Color.blue);
@@ -433,6 +423,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
             //end adiciona novo botao ao panel
             i++;
         }
+        //revalida e repinta apenas apos adicionar todos proprietarios
         PanelProprietarios.revalidate();
         PanelProprietarios.repaint();
     }
@@ -521,39 +512,24 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(SisPlacaCarroEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
     }
 
+    /**
+     * Seta valores de carro para ser mostrado em tela de exibicao.
+     * @param _carro 
+     */
     private void setValues(Carro _carro) {
-
-        /*
-         private javax.swing.JLabel foto;
-         private javax.swing.JLabel jLabel3;
-         */
+        
+        //Seta dados de carro nnos campos da janela
         TxCor.setText(_carro.getCor());
         TxMarca.setText(_carro.getMarca());
         TxModelo.setText(_carro.getModelo());
         TxPlaca.setText(_carro.getPlaca());
         TxPlaca.setEnabled(false);
+        //Adiciona lista de proprietarios
         adicionarProprietarios(_carro.getProprietarios());
 
-
+        //Seta foto de caror.
         try {
             InputStream in = new ByteArrayInputStream(_carro.getFoto());//carrega imagem de banco de dados em buffer
             fotoCarro = _carro.getFoto();

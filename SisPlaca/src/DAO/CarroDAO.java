@@ -85,6 +85,13 @@ public class CarroDAO {
         return false;
     }
     
+    /**
+     * Altera dados de carro no banco de dados.
+     * Para atualizar os proprietarios, primeiro sao excluidos todos os proprietarios atuais
+     * e entao inseridos os novos proprietarios passado por parametro.
+     * @param _carro
+     * @return 
+     */
     public boolean alterarCarro(Carro _carro){
         Connection conn = DAOBase.getConn();        
         PreparedStatement stm, stmCarro, stmProprietarios = null;
@@ -106,31 +113,25 @@ public class CarroDAO {
             stm.setInt(6, _carro.getAtivo());
             stm.setLong(7, _carro.getId());
             
-                    
             stm.executeUpdate();
-            conn.commit();
 
-
-                stmProprietarios = conn.prepareStatement("DELETE FROM tb_proprietarios_carros WHERE cl_carros = ?");
-                stmProprietarios.setLong(1, _carro.getId());
-     
+            //Delecao de de proprietarios da tabela de proprietarios e carros
+            stmProprietarios = conn.prepareStatement("DELETE FROM tb_proprietarios_carros WHERE cl_carros = ?");
+            stmProprietarios.setLong(1, _carro.getId());
             stmProprietarios.executeUpdate();
                        
-            System.out.println(_carro.getProprietarios());
             //Insercao de proprietarios
-            
             for (Proprietario prop : _carro.getProprietarios()) {
                 stmProprietarios = conn.prepareStatement("INSERT INTO tb_proprietarios_carros VALUES (? , ?)");
                 stmProprietarios.setInt(1, (int) prop.getId());
                 stmProprietarios.setLong(2, _carro.getId());
                 stmProprietarios.executeUpdate();
             }       
+            //end insercao de proprietarios
             
             conn.commit();
-            //end insercao de proprietarios
             conn.setAutoCommit(true);
             return true;
-            
             
         } catch (SQLException e) {
             System.out.println("Database error");

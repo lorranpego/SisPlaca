@@ -63,8 +63,6 @@ public class SisPlacaLogin extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("SENHA:");
 
-        login.setText("admin");
-
         BTEntrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BTEntrar.setText("ENTRAR");
         BTEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,8 +70,6 @@ public class SisPlacaLogin extends javax.swing.JFrame {
                 BTEntrarActionPerformed(evt);
             }
         });
-
-        senha.setText("admin");
 
         mensagem.setVisible(false);
 

@@ -47,6 +47,11 @@ public class CarroControl {
         return 0;
     }
     
+    /**
+     * Altera carro em banco de dados.
+     * @param _carro
+     * @return 
+     */
     public int alterarCarro(Carro _carro){
         if(!_carro.getProprietarios().isEmpty()){ 
                     if(dao.alterarCarro(_carro)){
