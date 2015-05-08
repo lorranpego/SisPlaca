@@ -419,11 +419,11 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
             //Adiciona novo botao ao panel
             PanelProprietarios.add(label);
             PanelProprietarios.add(button);
-            PanelProprietarios.revalidate();
-            PanelProprietarios.repaint();
             //end adiciona novo botao ao panel
             i++;
         }
+            PanelProprietarios.revalidate();
+            PanelProprietarios.repaint();
     }
     
     /**
