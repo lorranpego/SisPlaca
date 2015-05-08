@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Carro;
 import model.Proprietario;
+import tools.Util;
 
 /**
  *
@@ -84,6 +85,57 @@ public class CarroDAO {
         return false;
     }
     
+    public boolean alterarCarro(Carro _carro){
+        Connection conn = DAOBase.getConn();        
+        PreparedStatement stm, stmCarro, stmProprietarios = null;
+
+        try{
+            conn.setAutoCommit(false);
+           //Inserção de novo novo carro
+            stm = conn.prepareStatement("UPDATE tb_carros set "+
+                                           " cl_placa = ? , cl_marca = ?, "
+                                            + " cl_modelo = ?, cl_cor = ?,"
+                                            + " cl_foto = ?, cl_ativo = ? "
+                                           + " WHERE cl_id = ?");
+            
+            stm.setString(1, _carro.getPlaca());
+            stm.setString(2, _carro.getMarca());
+            stm.setString(3, _carro.getModelo());
+            stm.setString(4, _carro.getCor());
+            stm.setBytes(5, _carro.getFoto());
+            stm.setInt(6, _carro.getAtivo());
+            stm.setLong(7, _carro.getId());
+            
+                    
+            stm.executeUpdate();
+            conn.commit();
+
+
+                stmProprietarios = conn.prepareStatement("DELETE FROM tb_proprietarios_carros WHERE cl_carros = ?");
+                stmProprietarios.setLong(1, _carro.getId());
+     
+            stmProprietarios.executeUpdate();
+                       
+            
+            //Insercao de proprietarios
+            for (Proprietario prop : _carro.getProprietarios()) {
+                stmProprietarios = conn.prepareStatement("INSERT INTO tb_proprietarios_carros VALUES (? , ?)");
+                stmProprietarios.setInt(1, (int) prop.getId());
+                stmProprietarios.setLong(2, _carro.getId());
+            }       
+            stmProprietarios.executeUpdate();
+            conn.commit();
+            //end insercao de proprietarios
+            conn.setAutoCommit(true);
+            return true;
+            
+            
+        } catch (SQLException e) {
+            System.out.println("Database error");
+            e.printStackTrace();
+        }
+        return false;
+    }
     
      /**
      * Busca usuarios no banco de dados baseado em seu nome ou login.
