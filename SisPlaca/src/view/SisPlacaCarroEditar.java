@@ -19,7 +19,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -32,29 +34,34 @@ import model.Proprietario;
  * @author alunolab04
  */
 public class SisPlacaCarroEditar extends javax.swing.JFrame {
-    
+
     Control control;
     byte[] fotoCarro = null;
+    Carro carro;
+
     /**
      * Creates new form SisPlacaUsuarioCadastrar
+     *
      * @param _control
      */
-    public SisPlacaCarroEditar(Control _control) {
+    public SisPlacaCarroEditar(Control _control, Carro _c) {
         control = _control;
         //Reseta carro antes de comecar cadastro de novo carro.
         Control.carroControl.resetaCarro();
-        
+        this.carro = _c;
+
         initComponents();
-        
+        setValues(this.carro);
+
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        
+
     }
-    
+
     /**
      * Fecha janela.
      */
-    private void fecha(){
+    private void fecha() {
         this.dispose();
     }
 
@@ -90,7 +97,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SisPlaca - Editar Carro");
+        setTitle("SisPlaca - Cadastrar Usuário");
 
         LbPlaca.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LbPlaca.setText("PLACA *");
@@ -103,6 +110,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
             }
         });
 
+        TxPlaca.setName(""); // NOI18N
         TxPlaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxPlacaActionPerformed(evt);
@@ -306,10 +314,10 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
     private void TxCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxCorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxCorActionPerformed
-    
+
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     @SuppressWarnings("empty-statement")
     private void BtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalvarActionPerformed
@@ -319,49 +327,49 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         String marca = TxMarca.getText();
         String modelo = TxModelo.getText();
         String cor = TxCor.getText();
-        
+
         //Checagem de valores
-        if(placa.isEmpty() || marca.isEmpty() || modelo.isEmpty() 
-                || cor.isEmpty() || fotoCarro == null )
+        if (placa.isEmpty() || marca.isEmpty() || modelo.isEmpty()
+                || cor.isEmpty() || fotoCarro == null) {
             LbMensagem.setText("Os campos marcados com asterisco não podem estar vazios.");
-        else{
-            Carro novoCarro = new Carro(placa, marca, modelo, cor, 1, fotoCarro, Control.carroControl.carro.getProprietarios());
+        } else {
+            Carro novoCarro = new Carro(carro.getId(), placa, marca, modelo, cor, 1, fotoCarro, Control.carroControl.carro.getProprietarios());
 
-            int result = Control.carroControl.salvarCarro(novoCarro);
+            int result = Control.carroControl.alterarCarro(novoCarro);
 
-            switch(result){
-                case -1:{
-                        LbMensagem.setForeground(Color.red);
-                        LbMensagem.setText("Ao menos um proprietário requerido.");
-                        break;
+            switch (result) {
+                case -1: {
+                    LbMensagem.setForeground(Color.red);
+                    LbMensagem.setText("Ao menos um proprietário requerido.");
+                    break;
                 }
-                case 0:{
-                        LbMensagem.setForeground(Color.red);
-                        LbMensagem.setText("Algum erro aconteceu.");
-                        break;
+                case 0: {
+                    LbMensagem.setForeground(Color.red);
+                    LbMensagem.setText("Algum erro aconteceu.");
+                    break;
                 }
-                case 2:{
-                        LbMensagem.setForeground(Color.red);
-                        LbMensagem.setText("Placa de carro inválida. - Formado deve ser AAA-0000");
-                        break;
+                case 2: {
+                    LbMensagem.setForeground(Color.red);
+                    LbMensagem.setText("Placa de carro inválida. - Formado deve ser AAA-0000");
+                    break;
                 }
-                 case 3:{
-                        LbMensagem.setForeground(Color.red);
-                        LbMensagem.setText("Placa de carro já cadastrada.");
-                        break;
+                case 3: {
+                    LbMensagem.setForeground(Color.red);
+                    LbMensagem.setText("Placa de carro já cadastrada.");
+                    break;
                 }
-                case 1:{
-                        LbMensagem.setText("Carro salvo com sucesso");
-                        LbMensagem.setForeground(Color.blue);
+                case 1: {
+                    LbMensagem.setText("Carro salvo com sucesso");
+                    LbMensagem.setForeground(Color.blue);
 
-                        Timer timer = new Timer(1500, new ActionListener(){
-                         @Override
-                            public void actionPerformed(ActionEvent e) {
-                                fecha();
-                            }
-                        });
-                        timer.start();
-                        break;
+                    Timer timer = new Timer(1500, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            fecha();
+                        }
+                    });
+                    timer.start();
+                    break;
                 }
             };
         }
@@ -369,37 +377,40 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
 
     /**
      * Fecha janela de cadastrar carro.
-     * @param evt 
+     *
+     * @param evt
      */
     private void BtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCancelarActionPerformed
         this.fecha();
     }//GEN-LAST:event_BtCancelarActionPerformed
-    
+
     /**
-     * Escreve nome de proprietarios selecionados e botao para excluir qualquer um deles.
-     * @param _proprietarios 
+     * Escreve nome de proprietarios selecionados e botao para excluir qualquer
+     * um deles.
+     *
+     * @param _proprietarios
      */
-    private void adicionarProprietarios(ArrayList<Proprietario> _proprietarios){
+    private void adicionarProprietarios(ArrayList<Proprietario> _proprietarios) {
         int i = 1;
-        
+
         //Lima panel antes de recolocar proprietarios selecionados
         PanelProprietarios.removeAll();
-        
-        for(final Proprietario p : _proprietarios){
+
+        for (final Proprietario p : _proprietarios) {
             //Cria novo label para nome do proprietario
             JLabel label = new JLabel();
             label.setText(p.getNome() + " " + p.getSobrenome()); //seta texto
-            label.setName("LbProprietario"+i);   //seta nome de label
+            label.setName("LbProprietario" + i);   //seta nome de label
             label.setSize(label.getPreferredSize()); //seta tamanho
-            label.setLocation((int)label.getLocation().getX() + 50,
-                (int)label.getLocation().getY() + (30*i));//seta localizacaao
+            label.setLocation((int) label.getLocation().getX() + 50,
+                    (int) label.getLocation().getY() + (30 * i));//seta localizacaao
 
             //Cria novo botao
             JButton button = new JButton();
-            button.setName("BtProprietario"+i);
+            button.setName("BtProprietario" + i);
             button.setText("Excluir");
             button.setSize(button.getPreferredSize());
-            
+
             //Adiciona listener para retirar prorpietario de panel do panel
             button.addActionListener(new ActionListener() {
                 @Override
@@ -409,35 +420,37 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
             });
             //end listener
 
-            button.setLocation((int)label.getLocation().getX() + 200, (int)label.getLocation().getY());
-            
-            if(i > 5){
-               PanelProprietarios.setPreferredSize( new Dimension(PanelProprietarios.getPreferredSize().width, 
-                                                    PanelProprietarios.getPreferredSize().height+30));
+            button.setLocation((int) label.getLocation().getX() + 200, (int) label.getLocation().getY());
+
+            if (i > 5) {
+                PanelProprietarios.setPreferredSize(new Dimension(PanelProprietarios.getPreferredSize().width,
+                        PanelProprietarios.getPreferredSize().height + 30));
             }
 
             //Adiciona novo botao ao panel
             PanelProprietarios.add(label);
             PanelProprietarios.add(button);
-            PanelProprietarios.revalidate();
-            PanelProprietarios.repaint();
             //end adiciona novo botao ao panel
             i++;
         }
+        PanelProprietarios.revalidate();
+        PanelProprietarios.repaint();
     }
-    
+
     /**
      * Retira proprietario de lista de proprietarios de carro.
-     * @param _p 
+     *
+     * @param _p
      */
-    private void retiraProprietario(Proprietario _p){
+    private void retiraProprietario(Proprietario _p) {
         Control.carroControl.carro.getProprietarios().remove(_p);
         adicionarProprietarios(Control.carroControl.carro.getProprietarios());
     }
 
     /**
      * Seleciona imagem a mostra em jlabel.
-     * @param evt 
+     *
+     * @param evt
      */
     private void BtImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtImagemActionPerformed
         JFileChooser fileChooser = new JFileChooser();   //Cria o objeto do tipo Janela JFileChooser    
@@ -448,14 +461,14 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                 try {
                     File arquivo = fileChooser.getSelectedFile();//arquivo    
                     BufferedImage bi = ImageIO.read(arquivo); //carrega a imagem real num buffer 
-                    
+
                     //Add image in byte[] format
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    ImageIO.write( bi, "jpg", baos );
+                    ImageIO.write(bi, "jpg", baos);
                     baos.flush();
-                    fotoCarro  = baos.toByteArray();    
+                    fotoCarro = baos.toByteArray();
                     //end
-                    
+
                     BufferedImage aux = new BufferedImage(210, 170, bi.getType());//cria um buffer auxiliar com o tamanho desejado    
                     Graphics2D g = aux.createGraphics();//pega a classe graphics do aux para edicao    
                     AffineTransform at = AffineTransform.getScaleInstance((double) 210 / bi.getWidth(), (double) 170 / bi.getHeight());//cria a transformacao    
@@ -471,20 +484,21 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
 
     /**
      * Abre pop-up para selecao de proprietario do carro e seta catch de evento.
-     * @param evt 
+     *
+     * @param evt
      */
     private void BtAddProprietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAddProprietariosActionPerformed
-        SisPlacaCarroCadastrarProprietario carroProprietario = new SisPlacaCarroCadastrarProprietario(control);
+        SisPlacaCarroEditarProprietario carroProprietario = new SisPlacaCarroEditarProprietario(control);
         carroProprietario.setVisible(true);
-        
+
         //Recupera o evento de quando o pop-up é fechado para 
         //atualizar lista de proprietarios selecionados
         carroProprietario.addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosed(WindowEvent evento)  {  
+            public void windowClosed(WindowEvent evento) {
                 adicionarProprietarios(Control.carroControl.carro.getProprietarios());
             }
-        });  
+        });
     }//GEN-LAST:event_BtAddProprietariosActionPerformed
 
     /**
@@ -514,7 +528,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -523,9 +537,37 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-     
+
     }
-    
+
+    private void setValues(Carro _carro) {
+
+        /*
+         private javax.swing.JLabel foto;
+         private javax.swing.JLabel jLabel3;
+         */
+        TxCor.setText(_carro.getCor());
+        TxMarca.setText(_carro.getMarca());
+        TxModelo.setText(_carro.getModelo());
+        TxPlaca.setText(_carro.getPlaca());
+        TxPlaca.setEnabled(false);
+        adicionarProprietarios(_carro.getProprietarios());
+
+
+        try {
+            InputStream in = new ByteArrayInputStream(_carro.getFoto());//carrega imagem de banco de dados em buffer
+            fotoCarro = _carro.getFoto();
+            BufferedImage bi = ImageIO.read(in);//carrega imagem bufferizada
+            BufferedImage aux = new BufferedImage(210, 170, 5);//cria um buffer auxiliar com o tamanho desejado    
+            Graphics2D g = aux.createGraphics();//pega a classe graphics do aux para edicao    
+            AffineTransform at = AffineTransform.getScaleInstance((double) 210 / bi.getWidth(), (double) 170 / bi.getHeight());//cria a transformacao    
+            g.drawRenderedImage(bi, at);//pinta e transforma a imagem real no auxiliar    
+            foto.setIcon(new ImageIcon(aux));//seta no jlabel   
+            foto.setText(null); //Seta texto de jlabel nulo
+        } catch (Exception ex) {
+            // ex.printStackTrace();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAddProprietarios;
     private javax.swing.JButton BtCancelar;

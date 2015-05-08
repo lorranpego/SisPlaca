@@ -47,6 +47,16 @@ public class CarroControl {
         return 0;
     }
     
+    public int alterarCarro(Carro _carro){
+        if(!_carro.getProprietarios().isEmpty()){ 
+                    if(dao.alterarCarro(_carro)){
+                        return 1; //salvo com sucesso
+            }
+        }else{
+            return -1;//necessario incluir pelo menos um proprietario
+        }
+        return 0;
+    }
      
     /**
      * Pesquisa proprietarios baseado em nome

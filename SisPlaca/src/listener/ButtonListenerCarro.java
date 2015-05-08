@@ -9,6 +9,7 @@ import controller.Control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Carro;
+import view.SisPlacaCarroEditar;
 
 /**
  *
@@ -25,6 +26,6 @@ public class ButtonListenerCarro implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-          //  new SisPlacaCarroEditar(control, this.carro).setVisible(true);
+            new SisPlacaCarroEditar(control, this.carro).setVisible(true);
     }
 }
