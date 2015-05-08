@@ -116,14 +116,16 @@ public class CarroDAO {
      
             stmProprietarios.executeUpdate();
                        
-            
+            System.out.println(_carro.getProprietarios());
             //Insercao de proprietarios
+            
             for (Proprietario prop : _carro.getProprietarios()) {
                 stmProprietarios = conn.prepareStatement("INSERT INTO tb_proprietarios_carros VALUES (? , ?)");
                 stmProprietarios.setInt(1, (int) prop.getId());
                 stmProprietarios.setLong(2, _carro.getId());
+                stmProprietarios.executeUpdate();
             }       
-            stmProprietarios.executeUpdate();
+            
             conn.commit();
             //end insercao de proprietarios
             conn.setAutoCommit(true);

@@ -135,6 +135,7 @@ public class SisPlacaProprietarioEditar extends javax.swing.JFrame {
             }
         });
 
+        TxNome.setName(""); // NOI18N
         TxNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxNomeActionPerformed(evt);

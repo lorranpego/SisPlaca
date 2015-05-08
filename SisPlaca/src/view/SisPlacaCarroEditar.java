@@ -47,7 +47,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
     public SisPlacaCarroEditar(Control _control, Carro _c) {
         control = _control;
         //Reseta carro antes de comecar cadastro de novo carro.
-        Control.carroControl.resetaCarro();
+        Control.carroControl.carro = _c;
         this.carro = _c;
 
         initComponents();
