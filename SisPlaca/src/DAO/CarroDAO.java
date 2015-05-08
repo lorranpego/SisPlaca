@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Carro;
 import model.Proprietario;
-import tools.Util;
 
 /**
  *
