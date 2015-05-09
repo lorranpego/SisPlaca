@@ -54,6 +54,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
         menuCarros = new javax.swing.JMenu();
         menuCadastrarCarro = new javax.swing.JMenuItem();
         MenuPesquisarCarros = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuProprietarios = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -111,6 +112,14 @@ public class sisPlacaMain extends javax.swing.JFrame {
             }
         });
         menuCarros.add(MenuPesquisarCarros);
+
+        jMenuItem1.setText("Analisar Placa");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuCarros.add(jMenuItem1);
 
         jMenuBar1.add(menuCarros);
 
@@ -187,6 +196,11 @@ public class sisPlacaMain extends javax.swing.JFrame {
         new SisPlacaCarroPesquisar(control).setVisible(true);
     }//GEN-LAST:event_MenuPesquisarCarrosActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:                            
+        new SisPlacaAnalisarPlaca(control).setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -221,6 +235,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuPesquisarCarros;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
