@@ -52,16 +52,16 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
         BtFechar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         CheckBoxDesativados = new javax.swing.JCheckBox();
-        LbMostrarAtivo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PanelUsers = new javax.swing.JPanel();
+        jSeparator2 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SisPlaca - Pesquisar Usuário");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("PESQUISAR USUÁRIO");
 
         LbNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -93,15 +93,13 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
             }
         });
 
-        CheckBoxDesativados.setText("Mostrar Desativados");
-
-        LbMostrarAtivo.setText("Mostrar Usuários Desativados");
+        CheckBoxDesativados.setText("Mostrar Proprietários Desativados");
 
         javax.swing.GroupLayout PanelUsersLayout = new javax.swing.GroupLayout(PanelUsers);
         PanelUsers.setLayout(PanelUsersLayout);
         PanelUsersLayout.setHorizontalGroup(
             PanelUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 648, Short.MAX_VALUE)
         );
         PanelUsersLayout.setVerticalGroup(
             PanelUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,32 +130,35 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                                     .addComponent(LbNome, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                                     .addComponent(TxNome))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LbOu, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LbMostrarAtivo)
-                                    .addComponent(CheckBoxDesativados)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(LbOu, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(1, 1, 1)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(LbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(LbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(124, 124, 124))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jSeparator2))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(247, 247, 247)
+                .addComponent(CheckBoxDesativados)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addComponent(jLabel3)
-                .addGap(80, 80, 80)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbNome)
                     .addComponent(LbUsuario))
@@ -166,9 +167,7 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
                     .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LbOu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LbMostrarAtivo)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(CheckBoxDesativados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,7 +296,6 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
     private javax.swing.JButton BtPesquisar;
     private javax.swing.JCheckBox CheckBoxDesativados;
     private javax.swing.JLabel LbMensagem;
-    private javax.swing.JLabel LbMostrarAtivo;
     private javax.swing.JLabel LbNome;
     private javax.swing.JLabel LbOu;
     private javax.swing.JLabel LbUsuario;
@@ -308,6 +306,7 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
 }
