@@ -140,7 +140,7 @@ public class CarroDAO {
     }
     
      /**
-     * Busca usuarios no banco de dados baseado em seu nome ou login.
+     * Busca proprietários no banco de dados baseado em seu nome ou login.
      * @param _nome
      * @param _proprietarios
      * @return 
@@ -194,7 +194,7 @@ public class CarroDAO {
     }
     
      /**
-     * Busca carros no banco de dados baseado em sua placa ou modelo.
+     * Busca carros e seus proprietários no banco de dados baseado em sua placa ou modelo.
      * @param _placa
      * @param _modelo
      * @param _ativado
@@ -269,7 +269,7 @@ public class CarroDAO {
     }
     
      /**
-     * Busca carro no banco de dados baseado em sua placa.
+     * Busca carro, sem proprietários, no banco de dados baseado em sua placa.
      * @param _placa
      * @return 
      */
@@ -302,7 +302,7 @@ public class CarroDAO {
     }
     
     /**
-     * Altera situação de usuário.
+     * Altera situação de carro.
      * @param _carro
      * @param _situacao
      * @return boolean
