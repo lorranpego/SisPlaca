@@ -100,7 +100,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SisPlaca - Cadastrar Usuário");
+        setTitle("SisPlaca - Editar Carro");
 
         LbPlaca.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LbPlaca.setText("PLACA *");
@@ -399,6 +399,8 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
 
         //Lima panel antes de recolocar proprietarios selecionados
         PanelProprietarios.removeAll();
+        PanelProprietarios.setPreferredSize(new Dimension(PanelProprietarios.getPreferredSize().width - 100,
+                        PanelProprietarios.getPreferredSize().height));
 
         for (final Proprietario p : _proprietarios) {
             //Cria novo label para nome do proprietario

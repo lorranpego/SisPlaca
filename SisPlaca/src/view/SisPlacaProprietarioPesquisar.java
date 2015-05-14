@@ -29,6 +29,9 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         control = _control;
         initComponents();
         
+        PanelProprietarios.setPreferredSize(new Dimension(PanelProprietarios.getPreferredSize().width - 50,
+                        PanelProprietarios.getPreferredSize().height));
+        
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
@@ -56,7 +59,7 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SisPlaca - Pesquisar Usuário");
+        setTitle("SisPlaca - Pesquisar Proprietário");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -144,7 +147,7 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(80, 80, 80)
                         .addComponent(LbNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CheckBoxDesativados)))
@@ -152,7 +155,6 @@ public class SisPlacaProprietarioPesquisar extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

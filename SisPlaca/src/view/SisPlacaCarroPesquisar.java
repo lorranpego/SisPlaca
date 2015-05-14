@@ -6,6 +6,7 @@ package view;
 
 import listener.ButtonListenerCarro;
 import controller.Control;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -27,6 +28,9 @@ public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
     public SisPlacaCarroPesquisar(Control _control) {
         control = _control;
         initComponents();
+        
+        PanelProprietarios.setPreferredSize(new Dimension(PanelProprietarios.getPreferredSize().width - 50,
+                        PanelProprietarios.getPreferredSize().height));
         
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -57,7 +61,7 @@ public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SisPlaca - Pesquisar Usuário");
+        setTitle("SisPlaca - Pesquisar Carro");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -86,7 +90,12 @@ public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
             }
         });
 
-        CheckBoxDesativados.setText("Mostrar Proprietários Desativados");
+        CheckBoxDesativados.setText("Mostrar Carros Desativados");
+        CheckBoxDesativados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckBoxDesativadosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelProprietariosLayout = new javax.swing.GroupLayout(PanelProprietarios);
         PanelProprietarios.setLayout(PanelProprietariosLayout);
@@ -124,22 +133,20 @@ public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TxPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(17, 17, 17))
+                            .addComponent(LbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(TxModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CheckBoxDesativados)
-                                .addGap(19, 19, 19))))
-                    .addComponent(jSeparator2))
+                                .addGap(27, 27, 27)
+                                .addComponent(CheckBoxDesativados)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -246,6 +253,10 @@ public class SisPlacaCarroPesquisar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BtFecharActionPerformed
+
+    private void CheckBoxDesativadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxDesativadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckBoxDesativadosActionPerformed
     
     /**
      * Limpa panel de propriterarios completamente.

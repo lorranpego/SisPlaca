@@ -88,7 +88,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SisPlaca - Cadastrar Usuário");
+        setTitle("SisPlaca - Editar Usuário");
 
         LbNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LbNome.setText("NOME *");

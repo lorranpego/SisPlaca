@@ -106,7 +106,7 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SisPlaca - Cadastrar Usuário");
+        setTitle("SisPlaca - Cadastrar Proprietário");
 
         LbNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LbNome.setText("NOME *");
@@ -305,7 +305,7 @@ public class SisPlacaProprietarioCadastrar extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BtSalvar)
                             .addComponent(BtCancelar))
                         .addGap(13, 13, 13))

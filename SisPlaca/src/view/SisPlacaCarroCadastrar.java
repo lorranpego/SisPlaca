@@ -92,7 +92,7 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SisPlaca - Cadastrar Usuário");
+        setTitle("SisPlaca - Cadastrar Carro");
 
         LbPlaca.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LbPlaca.setText("PLACA *");
@@ -177,11 +177,13 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
             }
         });
 
+        PanelProprietarios.setPreferredSize(new java.awt.Dimension(460, 185));
+
         javax.swing.GroupLayout PanelProprietariosLayout = new javax.swing.GroupLayout(PanelProprietarios);
         PanelProprietarios.setLayout(PanelProprietariosLayout);
         PanelProprietariosLayout.setHorizontalGroup(
             PanelProprietariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGap(0, 464, Short.MAX_VALUE)
         );
         PanelProprietariosLayout.setVerticalGroup(
             PanelProprietariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,8 +289,6 @@ public class SisPlacaCarroCadastrar extends javax.swing.JFrame {
         );
 
         LbModelo.getAccessibleContext().setAccessibleName("Sobrenome");
-
-        getAccessibleContext().setAccessibleName("SisPlaca - Cadastrar Carro");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

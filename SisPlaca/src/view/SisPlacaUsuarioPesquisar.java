@@ -27,7 +27,11 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
      */
     public SisPlacaUsuarioPesquisar(Control _control) {
         control = _control;
+        
         initComponents();
+        
+        PanelUsers.setPreferredSize(new Dimension(PanelUsers.getPreferredSize().width - 50,
+                        PanelUsers.getPreferredSize().height));
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
@@ -93,7 +97,13 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
             }
         });
 
-        CheckBoxDesativados.setText("Mostrar Proprietários Desativados");
+        CheckBoxDesativados.setText("Mostrar Usuários Desativados");
+        CheckBoxDesativados.setToolTipText("");
+        CheckBoxDesativados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckBoxDesativadosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelUsersLayout = new javax.swing.GroupLayout(PanelUsers);
         PanelUsers.setLayout(PanelUsersLayout);
@@ -252,6 +262,10 @@ public class SisPlacaUsuarioPesquisar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_BtFecharActionPerformed
+
+    private void CheckBoxDesativadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxDesativadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckBoxDesativadosActionPerformed
     
     /**
      * Limpa panel de usuarios
