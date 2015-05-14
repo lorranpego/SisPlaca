@@ -41,6 +41,7 @@ public class SisPlacaUsuarioEditar extends javax.swing.JFrame {
             OpPerfil.setEnabled(false);
             BtDeletar.setEnabled(false);
         }
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE); 
 
     }
     

@@ -33,6 +33,7 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame  {
         
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE); 
     }
 
     /**

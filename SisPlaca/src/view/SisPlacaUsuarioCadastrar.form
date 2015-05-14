@@ -154,10 +154,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="TxEmail" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="TxTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="OpSexo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="TxTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="OpSexo" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="LbMensagem" min="-2" max="-2" attributes="0"/>
