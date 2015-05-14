@@ -60,8 +60,8 @@ public class CarroDAO {
                 stmProprietarios = conn.prepareStatement("INSERT INTO tb_proprietarios_carros VALUES (? , ?)");
                 stmProprietarios.setInt(1, (int) prop.getId());
                 stmProprietarios.setInt(2, id_carro);
+                stmProprietarios.executeUpdate();
             }       
-            stmProprietarios.executeUpdate();
             conn.commit();
             //end insercao de proprietarios
             
