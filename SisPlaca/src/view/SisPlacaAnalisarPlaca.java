@@ -49,6 +49,9 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
             initComponents();
             LbMessage.setForeground(Color.red);
             LbMessage.setText("Carro não cadastrado em banco de dados.");
+            this.setResizable(false);
+            this.setLocationRelativeTo(null);
+            this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE); 
         }
         
     }
