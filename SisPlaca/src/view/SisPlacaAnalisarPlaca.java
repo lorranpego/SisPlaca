@@ -38,6 +38,7 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
         this._placaCarro = _placaCarro;
         
         this.carro = Control.carroControl.pesquisarCarro(this._placaCarro, true);
+        
         if(this.carro != null){
             initComponents();
             LbMessage.setText("");
@@ -78,7 +79,6 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
         //Seta foto de carro
         try {
             InputStream in = new ByteArrayInputStream(_carro.getFoto());//carrega imagem de banco de dados em buffer
-            //fotoCarro = _carro.getFoto();
             BufferedImage bi = ImageIO.read(in);//carrega imagem bufferizada
             BufferedImage aux = new BufferedImage(210, 170, 5);//cria um buffer auxiliar com o tamanho desejado    
             Graphics2D g = aux.createGraphics();//pega a classe graphics do aux para edicao    
@@ -104,20 +104,18 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
         PanelProprietarios.removeAll();
         //Necessario usar SpringLayout para a ordenacao de proprietarios em Jpanel
         PanelProprietarios.setLayout(new SpringLayout());
-          for (final Proprietario p : _props) {
+        
+        for (final Proprietario p : _props) {
+            System.out.println(p);
             ProprietariosCarros proprietarioJpanel = new ProprietariosCarros(p); 
             
             proprietarioJpanel.setPreferredSize(new Dimension(proprietarioJpanel.getPreferredSize()));
-           
-            if (i > 1) {
-                PanelProprietarios.setPreferredSize(new Dimension(PanelProprietarios.getPreferredSize().width,
-                        PanelProprietarios.getPreferredSize().height + 311));
-            }
+            
             PanelProprietarios.add(proprietarioJpanel);
             i++;
         }
           
-        SpringUtilities.makeCompactGrid(PanelProprietarios,
+        SpringUtilities.makeGrid(PanelProprietarios,
                                 i-1, 1, //rows, cols
                                 6, 6,        //initX, initY
                                 6, 6);       //xPad, yPad

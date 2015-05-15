@@ -6,8 +6,6 @@
 package view;
 
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -90,7 +88,7 @@ public class ProprietariosCarros extends javax.swing.JPanel {
         TxEndereco = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
 
-        setPreferredSize(new java.awt.Dimension(640, 211));
+        setPreferredSize(new java.awt.Dimension(640, 239));
 
         foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
