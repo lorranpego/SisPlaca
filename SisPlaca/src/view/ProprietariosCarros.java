@@ -32,6 +32,10 @@ public class ProprietariosCarros extends javax.swing.JPanel {
         setValues(_p);
     }
     
+    /**
+     * Seta valores em campos de Jpanel.
+     * @param _p 
+     */
     private void setValues(Proprietario _p){
         //Seta dados de proprietario
         this.TxNome.setText(_p.getNome() + " " + _p.getNomeDoMeio() + " " + _p.getSobrenome());

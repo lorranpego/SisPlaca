@@ -5,13 +5,8 @@
 package view;
 
 import controller.Control;
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -19,12 +14,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import model.Carro;
 import model.Proprietario;
 import tools.SpringUtilities;
-import view.ProprietariosCarros;
 /**
  *
  * @author alunolab04
@@ -34,7 +27,6 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
     Control control;
     private String _placaCarro;
     private Carro carro;
-    //private byte[] fotoCarro = null;
     /**
      * Creates new form SisPlacaAnalisarPlaca
      * @param _control
@@ -52,14 +44,11 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
             this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE); 
             this.setValuesCarro(this.carro);
         }else{
+            initComponents();
            // fechar();
             System.out.println("Carro nao existe me banco de dados.");
         }
         
-    }
-
-    private SisPlacaAnalisarPlaca() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -108,25 +97,18 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
          
         int i = 1;
         PanelProprietarios.removeAll();
+        //Necessario usar SpringLayout para a ordenacao de proprietarios em Jpanel
         PanelProprietarios.setLayout(new SpringLayout());
           for (final Proprietario p : _props) {
-
-              
             ProprietariosCarros proprietarioJpanel = new ProprietariosCarros(p); 
             
             proprietarioJpanel.setPreferredSize(new Dimension(proprietarioJpanel.getPreferredSize()));
            
-//            proprietarioJpanel.setLocation((int)proprietarioJpanel.getLocation().getX(),
-//                                 (int)proprietarioJpanel.getLocation().getY() + (220 * i));
-
-            System.out.println(proprietarioJpanel);
             if (i > 1) {
                 PanelProprietarios.setPreferredSize(new Dimension(PanelProprietarios.getPreferredSize().width,
                         PanelProprietarios.getPreferredSize().height + 311));
             }
-            
             PanelProprietarios.add(proprietarioJpanel);
-            
             i++;
         }
           
