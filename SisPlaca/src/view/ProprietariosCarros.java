@@ -40,9 +40,9 @@ public class ProprietariosCarros extends javax.swing.JPanel {
         //Seta dados de proprietario
         this.TxNome.setText(_p.getNome() + " " + _p.getNomeDoMeio() + " " + _p.getSobrenome());
         this.TxEmail.setText(_p.getEmail());
-        this.TxTelefone.setText(Util.dataApresentacao(_p.getTelefone()));
+        this.TxTelefone.setText(_p.getTelefone());
         this.TxEndereco.setText(_p.getEndereco());
-        this.TxNascimento.setText(_p.getNascimento());
+        this.TxNascimento.setText(Util.dataApresentacao(_p.getNascimento()));
         
         if(_p.getSexo() == 'M'){
             this.TxSexo.setText("Masculino");
