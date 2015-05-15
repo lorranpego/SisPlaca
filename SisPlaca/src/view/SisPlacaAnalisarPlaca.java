@@ -5,6 +5,7 @@
 package view;
 
 import controller.Control;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -39,14 +40,15 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
         this.carro = Control.carroControl.pesquisarCarro(this._placaCarro, true);
         if(this.carro != null){
             initComponents();
+            LbMessage.setText("");
             this.setResizable(false);
             this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE); 
             this.setValuesCarro(this.carro);
         }else{
             initComponents();
-           // fechar();
-            System.out.println("Carro nao existe me banco de dados.");
+            LbMessage.setForeground(Color.red);
+            LbMessage.setText("Carro não cadastrado em banco de dados.");
         }
         
     }
@@ -146,6 +148,7 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         PanelProprietarios = new javax.swing.JPanel();
+        LbMessage = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -211,6 +214,8 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(PanelProprietarios);
 
+        LbMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LbMessage.setText("LABEL");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,7 +241,9 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
                             .addComponent(TxCor, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 680, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(LbMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btFechar))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -250,7 +257,7 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -286,7 +293,13 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btFechar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btFechar)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(LbMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -341,6 +354,7 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LbCor;
     private javax.swing.JLabel LbMarca;
+    private javax.swing.JLabel LbMessage;
     private javax.swing.JLabel LbModelo;
     private javax.swing.JPanel PanelProprietarios;
     private javax.swing.JTextField TxCor;
