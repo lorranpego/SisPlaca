@@ -46,6 +46,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
+        buscarButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuUsuarios = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
@@ -65,6 +66,13 @@ public class sisPlacaMain extends javax.swing.JFrame {
         jTextPane1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jTextPane1.setText("SisPlaca");
         jScrollPane1.setViewportView(jTextPane1);
+
+        buscarButton.setText("Buscar");
+        buscarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarButtonActionPerformed(evt);
+            }
+        });
 
         menuUsuarios.setText("Usuários");
 
@@ -141,16 +149,23 @@ public class sisPlacaMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(209, 209, 209)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(302, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(296, 296, 296))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buscarButton)
+                        .addGap(348, 348, 348))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addGap(84, 84, 84)
+                .addComponent(buscarButton)
+                .addGap(84, 84, 84)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,19 +188,23 @@ public class sisPlacaMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
         new SisPlacaProprietarioPesquisar(control).setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void menuCadastrarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarCarroActionPerformed
-        // TODO add your handling code here:
          new SisPlacaCarroCadastrar(control).setVisible(true);
     }//GEN-LAST:event_menuCadastrarCarroActionPerformed
 
     private void MenuPesquisarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPesquisarCarrosActionPerformed
-        // TODO add your handling code here:
         new SisPlacaCarroPesquisar(control).setVisible(true);
     }//GEN-LAST:event_MenuPesquisarCarrosActionPerformed
+
+    private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
+        // TODO Abrir janela de busca de imagem
+        
+        //Apenas usado para construir retorno apos processamento de imagem
+        new SisPlacaAnalisarPlaca(control, "ZZZ-0000").setVisible(true);
+    }//GEN-LAST:event_buscarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +239,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuPesquisarCarros;
+    private javax.swing.JButton buscarButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;

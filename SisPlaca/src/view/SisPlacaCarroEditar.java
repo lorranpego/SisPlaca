@@ -52,6 +52,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         this.carro = _c;
 
         initComponents();
+        TxMessage2.setText(" ");
         setValues(this.carro);
 
         this.setResizable(false);
@@ -98,6 +99,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         BtDeletar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+        TxMessage2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -208,6 +210,9 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                 BtDeletarActionPerformed(evt);
             }
         });
+
+        TxMessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxMessage2.setText("LABEL");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,9 +221,9 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,17 +246,18 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                                     .addComponent(LbCor, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                                 .addComponent(BtAddProprietarios))))
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jSeparator3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(BtSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtDeletar)
                         .addGap(18, 18, 18)
-                        .addComponent(BtCancelar)))
+                        .addComponent(BtCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))
+                    .addComponent(TxMessage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LbMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -264,12 +270,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LbFoto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LbFoto)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LbMarca)
@@ -288,13 +289,18 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(TxModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TxCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BtAddProprietarios)))
+                                    .addComponent(BtAddProprietarios))
+                                .addGap(11, 11, 11)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
-                                .addComponent(BtImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 109, Short.MAX_VALUE)))
-                .addGap(26, 26, 26)
+                                .addComponent(BtImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(TxMessage2)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -304,7 +310,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                             .addComponent(BtCancelar)
                             .addComponent(BtDeletar)
                             .addComponent(BtSalvar))))
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
 
         LbModelo.getAccessibleContext().setAccessibleName("Sobrenome");
@@ -346,7 +352,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         //Checagem de valores
         if (placa.isEmpty() || marca.isEmpty() || modelo.isEmpty()
                 || cor.isEmpty() || fotoCarro == null) {
-            LbMensagem.setText("Os campos marcados com asterisco não podem estar vazios.");
+            TxMessage2.setText("Os campos marcados com asterisco não podem estar vazios.");
         } else {
             Carro novoCarro = new Carro(carro.getId(), placa, marca, modelo, cor, 1, fotoCarro, Control.carroControl.carro.getProprietarios());
 
@@ -400,8 +406,6 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
 
         //Lima panel antes de recolocar proprietarios selecionados
         PanelProprietarios.removeAll();
-        PanelProprietarios.setPreferredSize(new Dimension(PanelProprietarios.getPreferredSize().width - 100,
-                        PanelProprietarios.getPreferredSize().height));
 
         for (final Proprietario p : _proprietarios) {
             //Cria novo label para nome do proprietario
@@ -590,6 +594,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
     private javax.swing.JPanel PanelProprietarios;
     private javax.swing.JTextField TxCor;
     private javax.swing.JTextField TxMarca;
+    private javax.swing.JLabel TxMessage2;
     private javax.swing.JTextField TxModelo;
     private javax.swing.JTextField TxPlaca;
     private javax.swing.JLabel foto;

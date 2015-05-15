@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JScrollBar;
 import model.Proprietario;
 
 /**
@@ -161,8 +160,8 @@ public class SisPlacaCarroCadastrarProprietario extends javax.swing.JFrame  {
         PanelProprietarios.revalidate();
         PanelProprietarios.repaint();
 
-        ArrayList<Proprietario> proprietarios = control.carroControl.pesquisarProprietarios(nome, 
-                control.carroControl.carro.getProprietarios());
+        ArrayList<Proprietario> proprietarios = Control.carroControl.pesquisarProprietarios(nome, 
+                Control.carroControl.carro.getProprietarios());
 
         int i = 1;
         for(Proprietario p : proprietarios){

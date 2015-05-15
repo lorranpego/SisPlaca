@@ -5,6 +5,8 @@
 package view;
 
 import controller.Control;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *

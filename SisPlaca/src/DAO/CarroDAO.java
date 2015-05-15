@@ -328,4 +328,68 @@ public class CarroDAO {
         
         return false;
     }
+    
+     /**
+     * Busca carro e seus proprietários no banco de dados baseado em sua placa.
+     * @param _placa
+     * @param _ativado
+     * @return 
+     */
+    public Carro buscarCarro(String _placa, Boolean _ativado){
+        Connection conn = DAOBase.getConn();
+        PreparedStatement stmt = null, stmProp = null;
+        
+        ArrayList<Proprietario> proprietarios;
+        Proprietario proprietarioBD;
+        Carro carroDB = null;
+        
+        String query = "", queryPlaca = "";
+        if(!_ativado)
+            query = " AND cl_ativo = 1 ";
+        
+        if(!_placa.isEmpty())
+            queryPlaca = " cl_placa like '%"+_placa+"%' ";
+        
+        try{
+            //Busca por placa
+            stmt = conn.prepareStatement("SELECT * FROM tb_carros "
+                + "WHERE ( "+ queryPlaca+" ) " + query);
+            
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                //Zera lista de proprietarios
+                proprietarios = new ArrayList<>();
+                
+                carroDB = new Carro();
+                carroDB.setId(new Long(rs.getLong("cl_id")));
+                carroDB.setPlaca(rs.getString("cl_placa"));
+                carroDB.setMarca(rs.getString("cl_marca"));
+                carroDB.setModelo(rs.getString("cl_modelo"));
+                carroDB.setCor(rs.getString("cl_cor"));
+                carroDB.setAtivo(rs.getInt("cl_ativo"));
+                carroDB.setFoto(rs.getBytes("cl_foto"));
+
+                //Busca proprietarios de carro
+                stmProp = conn.prepareStatement("SELECT cl_proprietarios "
+                        + "FROM tb_proprietarios_carros "
+                + "WHERE cl_carros =  ?");
+                
+                stmProp.setLong(1, carroDB.getId());
+                ResultSet rsProp = stmProp.executeQuery();
+                //Adiciona proprietarios de carro em lista
+                while(rsProp.next()){
+                    proprietarioBD = propDAO.buscarProprietario(new Long(rsProp.getLong("cl_proprietarios")));
+                    proprietarios.add(proprietarioBD);
+                }
+                
+                carroDB.setProprietarios(proprietarios);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Database error");
+           // e.printStackTrace();
+        }
+        
+        return carroDB;
+    }
 }

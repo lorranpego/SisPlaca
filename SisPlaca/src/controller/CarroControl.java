@@ -91,6 +91,17 @@ public class CarroControl {
         return dao.buscarCarros(_placa, _modelo, _ativado);
     }
     
+     /**
+     * Pesquisa carro
+     * @param _placa
+     * @param _modelo
+     * @param _ativado
+     * @return 
+     */
+    public Carro pesquisarCarro(String _placa, Boolean _ativado){
+        return dao.buscarCarro(_placa, _ativado);
+    }
+    
     /**
      * Marca carro como deletado em banco de dados.
      * @param _carro
