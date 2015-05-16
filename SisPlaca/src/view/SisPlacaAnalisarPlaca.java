@@ -106,9 +106,7 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
         PanelProprietarios.setLayout(new SpringLayout());
         
         for (final Proprietario p : _props) {
-            System.out.println(p);
             ProprietariosCarros proprietarioJpanel = new ProprietariosCarros(p); 
-            
             proprietarioJpanel.setPreferredSize(new Dimension(proprietarioJpanel.getPreferredSize()));
             
             PanelProprietarios.add(proprietarioJpanel);
