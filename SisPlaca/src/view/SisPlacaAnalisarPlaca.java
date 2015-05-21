@@ -71,7 +71,7 @@ public class SisPlacaAnalisarPlaca extends javax.swing.JFrame {
     private void setValuesCarro(Carro _carro){
         
         //Seta valores de carro 
-        txPlaca.setText(_carro.getPlaca());
+        txPlaca.setText(_placaCarro);
         TxMarca.setText(_carro.getMarca());
         TxCor.setText(_carro.getCor());
         TxModelo.setText(_carro.getModelo());

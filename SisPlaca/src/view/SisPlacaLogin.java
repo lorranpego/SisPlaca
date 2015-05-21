@@ -5,6 +5,7 @@
 package view;
 
 import controller.Control;
+import java.io.File;
 
 /**
  *
@@ -145,6 +146,8 @@ public class SisPlacaLogin extends javax.swing.JFrame {
         }
         if(control.realizarLogin(userLogin, userPass) == 1){
             new sisPlacaMain(control).setVisible(true);
+            //cria pasta de output utulizada pela leitura de placas.
+            new File("./output").mkdir();
             this.dispose();
         }else{
             label1.setText("Login ou Senha incorretos.");

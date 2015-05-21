@@ -5,7 +5,14 @@
 package view;
 
 import controller.Control;
+import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import model.Usuario;
+import tools.GeradorImagemTreino;
+import tools.Util;
 
 /**
  *
@@ -20,9 +27,17 @@ public class sisPlacaMain extends javax.swing.JFrame {
      * @param _control
      */
     public sisPlacaMain(Control _control) {
+        //realiza o treino das imagens
+        try {
+            GeradorImagemTreino.main(null);
+        } catch (IOException ex) {
+//            Logger.getLogger(sisPlacaMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         control = _control;
         user = control.getUser();
         initComponents();
+        message.setText("");
         
         if(user.getPerfil() != 1){
             menuCadastrar.setEnabled(false);
@@ -47,6 +62,8 @@ public class sisPlacaMain extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         buscarButton = new javax.swing.JButton();
+        message = new javax.swing.JLabel();
+        buscarButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuUsuarios = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
@@ -67,10 +84,20 @@ public class sisPlacaMain extends javax.swing.JFrame {
         jTextPane1.setText("SisPlaca");
         jScrollPane1.setViewportView(jTextPane1);
 
-        buscarButton.setText("Buscar");
+        buscarButton.setText("Imagem");
         buscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarButtonActionPerformed(evt);
+            }
+        });
+
+        message.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        message.setText("LABEL");
+
+        buscarButton1.setText("Texto");
+        buscarButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarButton1ActionPerformed(evt);
             }
         });
 
@@ -149,62 +176,109 @@ public class sisPlacaMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(296, 296, 296))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buscarButton)
-                        .addGap(348, 348, 348))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(296, 296, 296))
+            .addComponent(message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addComponent(buscarButton)
+                .addGap(204, 204, 204)
+                .addComponent(buscarButton1)
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
-                .addComponent(buscarButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarButton)
+                    .addComponent(buscarButton1))
                 .addGap(84, 84, 84)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarActionPerformed
+        message.setText("");
         new SisPlacaUsuarioCadastrar(control).setVisible(true);
     }//GEN-LAST:event_menuCadastrarActionPerformed
 
     private void menuPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarActionPerformed
+        message.setText("");
         new SisPlacaUsuarioPesquisar(control).setVisible(true);
     }//GEN-LAST:event_menuPesquisarActionPerformed
 
     private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
+        message.setText("");
         new SisPlacaUsuarioEditar(control, this.user).setVisible(true);
     }//GEN-LAST:event_menuEditarActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        message.setText("");
         new SisPlacaProprietarioCadastrar(control).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        message.setText("");
         new SisPlacaProprietarioPesquisar(control).setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void menuCadastrarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarCarroActionPerformed
-         new SisPlacaCarroCadastrar(control).setVisible(true);
+        message.setText(""); 
+        new SisPlacaCarroCadastrar(control).setVisible(true);
     }//GEN-LAST:event_menuCadastrarCarroActionPerformed
 
     private void MenuPesquisarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPesquisarCarrosActionPerformed
+        message.setText("");
         new SisPlacaCarroPesquisar(control).setVisible(true);
     }//GEN-LAST:event_MenuPesquisarCarrosActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-        // TODO Abrir janela de busca de imagem
-        
-        //Apenas usado para construir retorno apos processamento de imagem
-        new SisPlacaAnalisarPlaca(control, "ZZZ-0000").setVisible(true);
+        String placa = null;
+        message.setText("");
+        //Abre selecao de arquivo.
+        JFileChooser fileChooser = new JFileChooser();   //Cria o objeto do tipo Janela JFileChooser    
+        fileChooser.setDialogTitle("Escolha a Foto do Carro");  //Define o título do JFileChooser    
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);  //Define que só serão abertos arquivos    
+        {
+            if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                try {
+                    placa = tools.ReconhecimentoPlaca.reconhecePlaca(fileChooser.getSelectedFile().toString());
+                    
+                    System.out.println(placa);
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(sisPlacaMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        if(Util.checkPlaca(placa)){
+            //Apenas usado para construir retorno apos processamento de imagem
+            new SisPlacaAnalisarPlaca(control, placa).setVisible(true);
+        }else{
+            message.setForeground(Color.red);
+            message.setText("Placa inválida - " + placa);
+        }
     }//GEN-LAST:event_buscarButtonActionPerformed
+
+    private void buscarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButton1ActionPerformed
+        // TODO: Abrir pop-up para que seja digitada a placa.
+        String placa = "";
+        
+        if(Util.checkPlaca(placa)){
+            //Apenas usado para construir retorno apos processamento de imagem
+            new SisPlacaAnalisarPlaca(control, placa).setVisible(true);
+        }else{
+            message.setForeground(Color.red);
+            message.setText("Placa inválida - " + placa);
+        }
+    }//GEN-LAST:event_buscarButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +314,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuPesquisarCarros;
     private javax.swing.JButton buscarButton;
+    private javax.swing.JButton buscarButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
@@ -252,5 +327,6 @@ public class sisPlacaMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuPesquisar;
     private javax.swing.JMenu menuProprietarios;
     private javax.swing.JMenu menuUsuarios;
+    private javax.swing.JLabel message;
     // End of variables declaration//GEN-END:variables
 }
