@@ -27,13 +27,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
      * @param _control
      */
     public sisPlacaMain(Control _control) {
-        //realiza o treino das imagens
-        try {
-            GeradorImagemTreino.main(null);
-        } catch (IOException ex) {
-//            Logger.getLogger(sisPlacaMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+          
         control = _control;
         user = control.getUser();
         initComponents();
