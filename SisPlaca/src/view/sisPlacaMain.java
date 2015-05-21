@@ -64,6 +64,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
         buscarButton = new javax.swing.JButton();
         message = new javax.swing.JLabel();
         buscarButton1 = new javax.swing.JButton();
+        TxtPlaca = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuUsuarios = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
@@ -100,6 +101,8 @@ public class sisPlacaMain extends javax.swing.JFrame {
                 buscarButton1ActionPerformed(evt);
             }
         });
+
+        TxtPlaca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         menuUsuarios.setText("Usuários");
 
@@ -183,14 +186,21 @@ public class sisPlacaMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(223, 223, 223)
                 .addComponent(buscarButton)
-                .addGap(204, 204, 204)
-                .addComponent(buscarButton1)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(buscarButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(TxtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addGap(53, 53, 53)
+                .addComponent(TxtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscarButton)
                     .addComponent(buscarButton1))
@@ -268,8 +278,8 @@ public class sisPlacaMain extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void buscarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButton1ActionPerformed
-        // TODO: Abrir pop-up para que seja digitada a placa.
-        String placa = "";
+        String placa = TxtPlaca.getText();
+        TxtPlaca.setText("");
         
         if(Util.checkPlaca(placa)){
             //Apenas usado para construir retorno apos processamento de imagem
@@ -313,6 +323,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuPesquisarCarros;
+    private javax.swing.JTextField TxtPlaca;
     private javax.swing.JButton buscarButton;
     private javax.swing.JButton buscarButton1;
     private javax.swing.JMenuBar jMenuBar1;
