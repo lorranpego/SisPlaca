@@ -283,7 +283,6 @@ public class sisPlacaMain extends javax.swing.JFrame {
         TxtPlaca.setText("");
         
         if(Util.checkPlaca(placa)){
-            //Apenas usado para construir retorno apos processamento de imagem
             new SisPlacaAnalisarPlaca(control, placa).setVisible(true);
         }else{
             message.setForeground(Color.red);
