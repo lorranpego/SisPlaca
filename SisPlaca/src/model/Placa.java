@@ -94,7 +94,7 @@ public class Placa {
 
 		// adicionando todas as imagens na lista pra ver as diferenças
 		images.add(imagemOriginal);
-//		images.add(erodidaAbertura);
+//		images.add(erodidaAbertura); 
 //		images.add(dilatadaAbertura);
 //		images.add(aberturaTopHat);
 		images.add(dilatadaFechamento);
