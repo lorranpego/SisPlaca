@@ -248,7 +248,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
         message.setText("");
         //Abre selecao de arquivo.
         JFileChooser fileChooser = new JFileChooser();   //Cria o objeto do tipo Janela JFileChooser    
-        fileChooser.setDialogTitle("Escolha a Foto do Carro");  //Define o título do JFileChooser    
+        fileChooser.setDialogTitle("Escolha imagem com Placa do Carro");  //Define o título do JFileChooser    
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);  //Define que só serão abertos arquivos    
         {
             if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
