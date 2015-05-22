@@ -253,7 +253,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
         {
             if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 try {
-                    placa = tools.ReconhecimentoPlaca.reconhecePlaca(fileChooser.getSelectedFile().toString());
+                    placa = model.Placa.reconhecePlaca(fileChooser.getSelectedFile().toString());
                     
                     System.out.println(placa);
                     
