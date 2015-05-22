@@ -27,7 +27,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
      * @param _control
      */
     public sisPlacaMain(Control _control) {
-          
+       
         control = _control;
         user = control.getUser();
         initComponents();
