@@ -23,7 +23,6 @@ public class Control {
     //Controle de carro precisa ser static para que seja possivel pegar proprietarios ja cadastrados.
     public static CarroControl carroControl = new CarroControl(); 
     
-    public PlacaControl placaControl = new PlacaControl();
     public ProprietarioControl proprietarioControl = new ProprietarioControl();
     
     /**
