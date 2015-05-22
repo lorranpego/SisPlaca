@@ -275,7 +275,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
         
         if(TxtPlaca.getText().isEmpty()){
              message.setForeground(Color.red);
-              message.setText("Digite uma placa. ");
+              message.setText("Digite uma placa.");
               return;
         }
         
