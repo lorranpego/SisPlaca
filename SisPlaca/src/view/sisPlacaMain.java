@@ -272,6 +272,13 @@ public class sisPlacaMain extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void buscarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButton1ActionPerformed
+        
+        if(TxtPlaca.getText().isEmpty()){
+             message.setForeground(Color.red);
+              message.setText("Digite uma placa. ");
+              return;
+        }
+        
         String placa = TxtPlaca.getText();
         TxtPlaca.setText("");
         
@@ -280,7 +287,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
             new SisPlacaAnalisarPlaca(control, placa).setVisible(true);
         }else{
             message.setForeground(Color.red);
-            message.setText("Placa inválida - " + placa);
+            message.setText("Placa inválida, formato deve ser: AAA-0000");
         }
     }//GEN-LAST:event_buscarButton1ActionPerformed
 
