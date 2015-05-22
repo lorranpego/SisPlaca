@@ -13,10 +13,10 @@ import javax.media.jai.iterator.RandomIterFactory;
 public class Alfabeto {
 
 	// utilizado para gravar a matriz da letra
-	private LinkedHashMap<String, ArrayList<String>> treino = new LinkedHashMap<String, ArrayList<String>>();
+	private LinkedHashMap<String, ArrayList<String>> treino = new LinkedHashMap<>();
 
 	// utilizado para gravar a matriz do valor da letra
-	private LinkedHashMap<String, String> alfabeto = new LinkedHashMap<String, String>();
+	private LinkedHashMap<String, String> alfabeto = new LinkedHashMap<>();
 
 	// armazena a quantidade de caracteres aceitos
 	private int qtdCaracteres = 37;
