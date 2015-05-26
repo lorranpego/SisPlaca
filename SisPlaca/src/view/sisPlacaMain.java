@@ -36,7 +36,7 @@ public class sisPlacaMain extends javax.swing.JFrame {
             menuCadastrarProprietarios.setEnabled(false);
             menuPesquisar.setEnabled(false);
             menuCarros.setEnabled(false);
-            MenuCadastrarProprietarios.setEnabled(false);
+            menuProprietarios.setEnabled(false);
         }
         
         this.setResizable(false);
