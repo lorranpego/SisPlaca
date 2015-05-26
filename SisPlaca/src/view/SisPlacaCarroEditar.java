@@ -52,7 +52,6 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         this.carro = _c;
 
         initComponents();
-        TxMessage2.setText(" ");
         setValues(this.carro);
 
         this.setResizable(false);
@@ -99,7 +98,6 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         BtDeletar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        TxMessage2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -210,18 +208,16 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                 BtDeletarActionPerformed(evt);
             }
         });
-
-        TxMessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxMessage2.setText("LABEL");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LbMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,10 +252,8 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addComponent(TxMessage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LbMensagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,18 +292,15 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
                                 .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
                                 .addComponent(BtImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(TxMessage2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtCancelar)
-                            .addComponent(BtDeletar)
-                            .addComponent(BtSalvar))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(LbMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtCancelar)
+                    .addComponent(BtDeletar)
+                    .addComponent(BtSalvar))
                 .addContainerGap())
         );
 
@@ -352,7 +343,7 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
         //Checagem de valores
         if (placa.isEmpty() || marca.isEmpty() || modelo.isEmpty()
                 || cor.isEmpty() || fotoCarro == null) {
-            TxMessage2.setText("Os campos marcados com asterisco não podem estar vazios.");
+            LbMensagem.setText("Os campos marcados com asterisco não podem estar vazios.");
         } else {
             Carro novoCarro = new Carro(carro.getId(), placa, marca, modelo, cor, 1, fotoCarro, Control.carroControl.carro.getProprietarios());
 
@@ -594,7 +585,6 @@ public class SisPlacaCarroEditar extends javax.swing.JFrame {
     private javax.swing.JPanel PanelProprietarios;
     private javax.swing.JTextField TxCor;
     private javax.swing.JTextField TxMarca;
-    private javax.swing.JLabel TxMessage2;
     private javax.swing.JTextField TxModelo;
     private javax.swing.JTextField TxPlaca;
     private javax.swing.JLabel foto;
