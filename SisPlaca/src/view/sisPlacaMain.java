@@ -33,10 +33,10 @@ public class sisPlacaMain extends javax.swing.JFrame {
         message.setText("");
         
         if(user.getPerfil() != 1){
-            menuCadastrar.setEnabled(false);
+            menuCadastrarProprietarios.setEnabled(false);
             menuPesquisar.setEnabled(false);
             menuCarros.setEnabled(false);
-            menuProprietarios.setEnabled(false);
+            MenuCadastrarProprietarios.setEnabled(false);
         }
         
         this.setResizable(false);
@@ -60,15 +60,15 @@ public class sisPlacaMain extends javax.swing.JFrame {
         TxtPlaca = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuUsuarios = new javax.swing.JMenu();
-        menuCadastrar = new javax.swing.JMenuItem();
+        menuCadastrarProprietarios = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenuItem();
         menuPesquisar = new javax.swing.JMenuItem();
         menuCarros = new javax.swing.JMenu();
         menuCadastrarCarro = new javax.swing.JMenuItem();
         MenuPesquisarCarros = new javax.swing.JMenuItem();
         menuProprietarios = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        MenuCadastrarProprietarios = new javax.swing.JMenuItem();
+        MenuPesquisarProprietarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SisPlaca");
@@ -99,13 +99,13 @@ public class sisPlacaMain extends javax.swing.JFrame {
 
         menuUsuarios.setText("Usuários");
 
-        menuCadastrar.setText("Cadastrar");
-        menuCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        menuCadastrarProprietarios.setText("Cadastrar");
+        menuCadastrarProprietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCadastrarActionPerformed(evt);
+                menuCadastrarProprietariosActionPerformed(evt);
             }
         });
-        menuUsuarios.add(menuCadastrar);
+        menuUsuarios.add(menuCadastrarProprietarios);
 
         menuEditar.setText("Editar");
         menuEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -147,21 +147,21 @@ public class sisPlacaMain extends javax.swing.JFrame {
 
         menuProprietarios.setText("Proprietários");
 
-        jMenuItem7.setText("Cadastrar");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        MenuCadastrarProprietarios.setText("Cadastrar");
+        MenuCadastrarProprietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                MenuCadastrarProprietariosActionPerformed(evt);
             }
         });
-        menuProprietarios.add(jMenuItem7);
+        menuProprietarios.add(MenuCadastrarProprietarios);
 
-        jMenuItem9.setText("Pesquisar");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        MenuPesquisarProprietarios.setText("Pesquisar");
+        MenuPesquisarProprietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                MenuPesquisarProprietariosActionPerformed(evt);
             }
         });
-        menuProprietarios.add(jMenuItem9);
+        menuProprietarios.add(MenuPesquisarProprietarios);
 
         jMenuBar1.add(menuProprietarios);
 
@@ -207,10 +207,10 @@ public class sisPlacaMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarActionPerformed
+    private void menuCadastrarProprietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarProprietariosActionPerformed
         message.setText("");
         new SisPlacaUsuarioCadastrar(control).setVisible(true);
-    }//GEN-LAST:event_menuCadastrarActionPerformed
+    }//GEN-LAST:event_menuCadastrarProprietariosActionPerformed
 
     private void menuPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarActionPerformed
         message.setText("");
@@ -222,15 +222,15 @@ public class sisPlacaMain extends javax.swing.JFrame {
         new SisPlacaUsuarioEditar(control, this.user).setVisible(true);
     }//GEN-LAST:event_menuEditarActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void MenuCadastrarProprietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadastrarProprietariosActionPerformed
         message.setText("");
         new SisPlacaProprietarioCadastrar(control).setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_MenuCadastrarProprietariosActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void MenuPesquisarProprietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPesquisarProprietariosActionPerformed
         message.setText("");
         new SisPlacaProprietarioPesquisar(control).setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_MenuPesquisarProprietariosActionPerformed
 
     private void menuCadastrarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarCarroActionPerformed
         message.setText(""); 
@@ -321,17 +321,17 @@ public class sisPlacaMain extends javax.swing.JFrame {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuCadastrarProprietarios;
     private javax.swing.JMenuItem MenuPesquisarCarros;
+    private javax.swing.JMenuItem MenuPesquisarProprietarios;
     private javax.swing.JTextField TxtPlaca;
     private javax.swing.JButton buscarButton;
     private javax.swing.JButton buscarButton1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JMenuItem menuCadastrar;
     private javax.swing.JMenuItem menuCadastrarCarro;
+    private javax.swing.JMenuItem menuCadastrarProprietarios;
     private javax.swing.JMenu menuCarros;
     private javax.swing.JMenuItem menuEditar;
     private javax.swing.JMenuItem menuPesquisar;
